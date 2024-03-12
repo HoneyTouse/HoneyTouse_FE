@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>꿀단집</title>
+
+    <!-- 웹 폰트 나눔스퀘어 네오 -->
+    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="./basket.css">
+    <script src="https://kit.fontawesome.com/931727edad.js" crossorigin="anonymous"></script>
+
+    <script type="module" src="/assets/js/common.js"></script>
+
+</head>
+
+<body>
+    <header class="header on">
+
+    </header>
+
+    <section class="basket">
+        <div class="basket_inner">
+
+            <div class="basket_wrap">
+                <h3>BASKET</h3>
+                <div class="basket_all-wrap">
+                    <div>
+                        <input type="checkbox" id="all-check" style="display: none;">
+                        <label for="all-check" class="all-check-btn">모두선택</label>
+                    </div>
+
+                    <button onclick="deleteChoiceProduct()">선택삭제</button>
+                </div>
+                <ul class="basket-list-wrap">
+                </ul>
+            </div>
+
+            <div class="basket_side">
+                <div class="basket_price-wrap">
+                    <p><span>총 상품 금액</span> <span class="basket_price all-choice-product-price">55,000원</span></p>
+                    <p><span>총 배송비</span> <span class="basket_price basket-delivery-charge">3,000원</span></p>
+                    <p><span>총 할인금액</span> <span class="basket_price">0원</span></p>
+                    <p class="bs_price_wrap"><span>결제금액</span> <span class="bs_price"></span></p>
+                </div>
+                <a href="/checkout/" class="purchase-button"><span>1</span>개 상품 구매하기</a>
+
+
+            </div>
+
+        </div>
+    </section>
+
+    <div class="option_modal">
+        <div class="option_modal_inner">
+            <div class="om_top">
+                <p>옵션선택</p>
+                <i class="fa-solid fa-xmark" onclick="closeOptionModal(this)"></i>
+            </div>
+
+            <div class="om_product">
+                <div class="om_img">
+                    <img src="" alt="">
+                </div>
+                <div class="omp_name">
+                    <h3></h3>
+                    <p></p>
+                </div>
+            </div>
+            <ul class="om_choice-wrap">
+
+            </ul>
+            <div class="om_option-list">
+                <p>
+                </p>
+                <div>
+                    <div class="om_amount">
+                        <button onclick="decreaseCountModal(this)">
+                            <i class="fa-solid fa-minus"></i>
+                        </button>
+                        <span></span>
+                        <button onclick="increaseCountModal(this)">
+                            <i class="fa-solid fa-plus"></i>
+                        </button>
+                    </div>
+                    <div class="om_price">
+                        <p></p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="om_btn">
+                <button class="om_cancell" onclick="closeOptionModal(this)">취소</button>
+                <button class="om_checked" onclick="updateOption(this)">확인</button>
+            </div>
+
+        </div>
+    </div>
+
+    <footer class="footer">
+
+    </footer>
+
+</body>
+
+<script type="module" src="./basket.js"></script>
+
+
+
+
+
+</html>

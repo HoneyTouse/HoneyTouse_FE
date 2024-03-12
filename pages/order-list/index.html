@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>꿀단집</title>
+
+    <!-- 웹 폰트 나눔스퀘어 네오 -->
+    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/mypage/mypage.css">
+    <link rel="stylesheet" href="/checkout/checkout.css">
+    <link rel="stylesheet" href="./order-list.css">
+    <script src="https://kit.fontawesome.com/931727edad.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header class="header"></header>
+
+    <section class="order-list detail">
+        <div class="mypage">
+            <aside class="side" id="sidebar">
+                <!-- 사이드바 코드 들어갈 곳 -->
+            </aside>
+        </div>
+        <main class="orders" id="main-content">
+            <!-- 메뉴별 화면 들어갈 곳 -->
+            <div class="order-list_inner">
+                <h1>주문 내역</h1>
+                <div class="order-date-select">
+                    <select id="dateFilter">
+                        <option value="" selected disabled>날짜조회</option>
+                        <option value="all">전체</option>
+                        <option value="2024-03-02">오늘</option>
+                        <option value="2024-03-01">1일 전</option>
+                        <option value="2024-02-29">2일 전</option>
+                        <option value="2024-02-28">3일 전</option>
+                    </select>
+                </div>
+                <ul id="orders">
+                </ul>
+            </div>
+        </main>
+    </section>
+    
+    <footer class="footer">
+        
+    </footer>
+    <script type="module" src="./order-list.js"></script>
+    <!-- mypage 사이드바 스크립트 -->
+    <script type="module" src="./side-bar.js"></script>
+    <!-- 헤더/푸터 공동 스크립트 -->
+    <script type="module" src="/assets/js/common.js"></script>
+</html>

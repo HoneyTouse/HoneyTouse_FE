@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>꿀단집</title>
+
+    <link rel="shortcut icon" href="../favicon.png" type="image/x-icon" />
+
+    <!-- 웹 폰트 나눔스퀘어 네오 -->
+    <link
+      href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+    <link rel="stylesheet" href="./adminpage.css" />
+    <script
+      src="https://kit.fontawesome.com/931727edad.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+  <body>
+    <header class="header"></header>
+    <section class="adminpage">
+      <div class="inner">
+        <div class="contents">
+          <aside class="side">
+            <a
+              href="/adminpage/adminpage.html"
+              style="font-size: 1.6rem; font-weight: bold"
+              >관리자페이지</a
+            >
+            <ul style="margin: 20px auto">
+              <li>
+                <button id="userBtn" class="nav-link" data-page="users">
+                  회원 관리
+                </button>
+              </li>
+              <li>
+                <button id="orderBtn" class="nav-link" data-page="orders">
+                  주문 관리
+                </button>
+              </li>
+              <li>
+                <button id="productBtn" class="nav-link" data-page="products">
+                  상품 관리
+                </button>
+              </li>
+              <li>
+                <button
+                  id="categoryBtn"
+                  class="nav-link"
+                  data-page="categories"
+                >
+                  카테고리 관리
+                </button>
+              </li>
+            </ul>
+          </aside>
+          <article class="con" id="content">
+            <div class="user_detail">
+              <label class="user_thumb">
+                <img
+                  src="../assets/img/admin_profile.jpg"
+                  alt="사용자 이미지"
+                />
+              </label>
+              <div class="info_box">
+                <strong class="username">관리자 계정</strong>
+                <strong class="admin-info"></strong>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <script type="module" src="../assets/js/common.js"></script>
+    <footer class="footer"></footer>
+    <!-- 스크립트연결 -->
+    <script type="module" src="adminpage.js"></script>
+    <script type="module" src="adminUser.js"></script>
+    <script type="module" src="adminOrder.js"></script>
+    <script type="module" src="adminCategory.js"></script>
+    <script type="module" src="adminProduct.js"></script>
+  </body>
+</html>

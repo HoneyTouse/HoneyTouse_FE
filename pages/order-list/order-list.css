@@ -1,0 +1,142 @@
+/* order-list 공통 */
+
+section.order-list.detail {
+    width: 100%;
+    max-width: 1300px;
+    
+    padding: 0 30px;
+    padding-top: 135px;
+    padding-bottom: 80px;
+    margin: 0px auto;
+    box-sizing: border-box;
+    display: flex;
+}
+
+.order-list #main-content {
+    flex: 1;
+}
+
+.order-list .order-list_inner {
+    padding-left: 30px;
+    width: inherit;
+}
+
+.order-list .order-date-select {
+    width: 120px;
+    margin-bottom: 10px;
+    padding: 0px 15px;
+    box-sizing: border-box;
+    border-radius: 30px;
+    background-color: #ededf3;
+    text-align: center;
+}
+
+.order-list select {
+    border: none;
+    color: #222;
+    padding: 10px 0px;
+    background-color: inherit;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.order-list #sidebar {
+    min-width: 220px;
+    height: 100%;
+}
+.order-list .order_content {
+    display: flex;
+    justify-content: space-between;
+}
+.order-list .ordered-products {
+    width: 100%;
+    padding-right: 10px;
+}
+.order-list .info-order {
+    margin: 0 0 30px 0;
+}
+
+
+
+/* order-list/detail 전용 */
+
+.order-list.detail .order-number {
+    margin-bottom: 40px;
+}
+.order-list.detail .order_date {
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.order-list.detail .info-product .section_content {
+    margin-top: 10px;
+}
+
+.order-list.detail .info-product .product_img {
+    width: 100px;
+}
+
+.order-list.detail .order-status {
+    margin: 10px 0 15px 0;
+    font-weight: bold;
+}
+
+.order-list.detail ._date {
+    box-sizing: border-box;
+    margin-left: 8px;
+    padding-left: 8px;
+    border-left: solid 1px #222;
+}
+
+.order-list.detail .info-product .info_line {
+    height: 100px;
+    margin: 0;
+    padding: 20px 0;
+}
+
+.order-list.detail .info-product .info_line:not(:last-child) {
+    border-bottom: 2px dashed #555;
+}
+
+.order-list .info-product .btn-list {
+    height: 100%;
+    width: 90px;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    text-align: end;
+}
+
+.order-list.detail .info-product .btn-order-detail {
+    width: 88px;
+    margin-bottom: 5px;
+    border: 2px solid #333;
+    border-radius: 10px;
+    padding: 6px 1em;
+    color: #333;
+    font-size: 14px;
+    background-color: inherit;
+}
+
+.order-list .order-status {
+    text-align: left;
+}
+
+.order-list .order-status a {
+    float: right;
+}
+/* mypage 주문내역 전용 */
+.mypage .con .order-list__menu {
+    border-radius: 20px;
+}
+.mypage .order-list .info-product h2 {
+    font-size: 20px;
+}
+.mypage .order-list .info-product .order-status {
+    font-size: 16px;
+}
+
+/* filter용 */
+.hidden {
+    display: none;
+}

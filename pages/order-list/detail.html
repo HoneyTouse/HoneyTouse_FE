@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>꿀단집</title>
+
+    <!-- 웹 폰트 나눔스퀘어 네오 -->
+    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/checkout/checkout.css">
+    <link rel="stylesheet" href="./order-list.css">
+    <link rel="stylesheet" href="/mypage/mypage.css">
+    <script src="https://kit.fontawesome.com/931727edad.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header class="header"></header>
+
+    <section class="order-list detail">
+        <div class="mypage">
+            <aside class="side" id="sidebar">
+                <!-- 사이드바 코드 들어갈 곳 -->
+            </aside>
+        </div>
+        <main class="orders" id="main-content">
+            <!-- 메뉴별 화면 들어갈 곳 -->
+            <div class="order-list_inner">
+                <h1>주문 상세</h1>
+                <div class="order-number">
+                    <p class="order_date"> </p>
+                    <p class="order_num">
+                        (주문번호 : ${createdAt.replace('T', ' ').slice(0, 19)}
+                    </p>
+                </div>
+                <section class="info-product order-in-progress">
+                    <div class="section_title">
+                        <h2>📦주문 상품</h2>
+                    </div>
+                    <article class="section_content order-in-progress wrap">
+                        <p class="order-status">
+
+                        </p>
+                        <div class="order_content">
+                            <ul class="ordered-products">
+
+                            </ul>
+                            <ul class="btn-list">
+                                
+                            </ul>
+                        </div>
+                    </article>
+                </section>
+                <section class="info-delivery">
+                    <div class="section_title">
+                        <h2>🚚배송 정보</h2>
+                    </div>
+                    <article class="section_content wrap">
+                        <dl class="info_list">
+                            <div class="info_line">
+                                <dt class="title">수령인</dt>
+                                <dd class="desc" id="receiverName">${user.name}</dd>
+                            </div>
+                            <div class="info_line">
+                                <dt class="title">휴대폰</dt>
+                                <dd class="desc" id="receiverPhoneNumber">${user.phoneNumber}</dd>
+                            </div>
+                            <div class="info_line">
+                                <dt class="title">주소</dt>
+                                <dd class="desc" id="receiverAddress">${user.address} + ${user.addressDetail}</dd>
+                            </div>
+                            <div class="info_line">
+                                <dt class="title">배송 메모</dt>
+                                <dd class="desc" id="receiverMemo">${order.memo}</dd>
+                            </div>
+                        </dl>
+                    </article>
+                </section>
+                <section class="payment">
+                    <div class="section_title">
+                        <h2>💸결제 금액</h2>
+                    </div>
+                    <article class="section_content wrap">
+                        <dl class="payment_list">
+                            <div class="info_line">
+                                <dt class="title">총 상품 금액</dt>
+                                <dd class="desc" id="ttlPriceItem">${order.payment.ttlPriceItem}</dd>
+                            </div>
+                            <div class="info_line">
+                                <dt class="title">총 배송비</dt>
+                                <dd class="desc" id="ttlPriceDelivery">${order.payment.ttlPriceDelivery}</dd>
+                            </div>
+                            <hr />
+                            <div class="info_line ttl">
+                                <dt class="title">총 결제 금액</dt>
+                                <dd class="desc" id="ttlPrice">${order.payment.ttlPrice}</dd>
+                            </div>
+                            <hr />
+                            <div class="info_line">
+                                <dt class="title">결제일시</dt>
+                                <dd class="desc" id="orderDate">${order.createdAt.replace('T', ' ').slice(0, 19)}</dd>
+                            </div>
+                        </dl>
+                    </article>
+                </section>
+            </div>
+        </main>
+    </section>
+    
+    <footer class="footer">
+
+    </footer>
+    <script type="module" src="./order-list.js"></script>
+    <!-- mypage 사이드바 스크립트 -->
+    <script type="module" src="./side-bar.js"></script>
+    <!-- 헤더/푸터 공동 스크립트 -->
+    <script type="module" src="/assets/js/common.js"></script>
+    <script type="module" src="./order-detail.js"></script>
+</html>

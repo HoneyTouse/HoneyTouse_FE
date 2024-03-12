@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>꿀단집</title>
+
+    <!-- 웹 폰트 나눔스퀘어 네오 -->
+    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="./login.css">
+    <script src="https://kit.fontawesome.com/931727edad.js" crossorigin="anonymous"></script>
+
+    <script type="module" src="/assets/js/common.js"></script>
+
+</head>
+
+<body>
+    <header class="header on">
+
+    </header>
+
+    <section class="login">
+        <div class="login_inner">
+            <div class="login_wrap">
+                <h3>LOGIN</h3>
+
+                <form action="" method="post">
+                    <div class="login-email-wrap">
+                        <p>이메일 주소</p>
+                        <input class="login_email" type="email" name="email" placeholder="예) kream@kream.co.kr">
+                        <p class="input_error">이메일 주소를 정확히 입력해주세요.</p>
+                    </div>
+
+                    <div class="login-password-wrap">
+                        <p>비밀번호</p>
+                        <input class="login_password" type="password" name="password" maxlength="16">
+                        <p class="input_error">영문, 숫자, 특수문자를 조합해서 입력해주세요. (8-16자)</p>
+                    </div>
+
+
+                    <input class="login_submit" type="submit" value="LOGIN">
+                </form>
+
+                <ul class="login_route">
+                    <li>
+                        <a href="/join/">회원 가입</a>
+                    </li>
+                    <li>
+                        <a href="">비밀번호 찾기</a>
+                    </li>
+                    <!-- <li>
+                        <a href="">테스트 계정 로그인</a>
+                    </li> -->
+                </ul>
+
+                <ul class="login_sns">
+                    <li>
+                        <a href="">
+                            <i class="fa-brands fa-google"></i>
+                            <span>
+                                구글 로그인
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </section>
+
+
+    <footer class="footer">
+
+    </footer>
+
+</body>
+
+
+<script defer type="module" src="./login.js"></script>
+
+</html>

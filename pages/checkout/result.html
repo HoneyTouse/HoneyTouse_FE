@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="주문결제가 완료되면 보이는 페이지입니다.">
+    <title>꿀단집</title>
+
+    <!-- 웹 폰트 나눔스퀘어 네오 -->
+    <link rel="icon" href="../favicon.png">
+    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="./checkout.css">
+    <script src="https://kit.fontawesome.com/931727edad.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header class="header">
+
+    </header>
+
+    <section class="orders result">
+        <div class="common-container">
+            <div class="result_area">
+                <h1>✨주문·결제 완료✨</h1>
+                <p class="data sub-text">
+                    ( 주문번호 :
+                    <span class="order_num"></span>
+                    )
+                </p>
+                <div class="result_img">
+                    <img src="/assets/img/order_success.webp" alt="주문완료.jpg" />
+                </div>
+                <p class="guide">배송 및 주문 상세정보는 아래에서 확인하실 수 있습니다.</p>
+                <a href="/order-list/">
+                    <button id="btnOrderlist">주문내역 상세 보기</button>
+                </a>
+                <section class="info-delivery">
+                    <div class="section_title">
+                        <h2>🚚배송 정보</h2>
+                    </div>
+                    <article class="section_content wrap">
+                        <dl class="info_list">
+                            <div class="info_line">
+                                <dt class="title">수령인</dt>
+                                <dd class="desc" id="receiverName"></dd>
+                            </div>
+                            <div class="info_line">
+                                <dt class="title">휴대폰</dt>
+                                <dd class="desc" id="receiverPhoneNumber"></dd>
+                            </div>
+                            <div class="info_line">
+                                <dt class="title">주소</dt>
+                                <dd class="desc" id="receiverAddress"></dd>
+                            </div>
+                            <div class="info_line">
+                                <dt class="title">배송 메모</dt>
+                                <dd class="desc" id="receiverMemo"></dd>
+                            </div>
+                        </dl>
+                    </article>
+                </section>
+                <section class="payment">
+                    <div class="section_title">
+                        <h2>💸결제 금액</h2>
+                    </div>
+                    <article class="section_content wrap">
+                        <dl class="payment_list">
+                            <div class="info_line">
+                                <dt class="title">총 상품 금액</dt>
+                                <dd class="desc" id="ttlPriceItem"></dd>
+                            </div>
+                            <div class="info_line">
+                                <dt class="title">총 배송비</dt>
+                                <dd class="desc" id="ttlPriceDelivery"></dd>
+                            </div>
+                            <hr />
+                            <div class="info_line ttl">
+                                <dt class="title">총 결제 금액</dt>
+                                <dd class="desc" id="ttlPrice"></dd>
+                            </div>
+                            <hr />
+                            <div class="info_line">
+                                <dt class="title">결제일시</dt>
+                                <dd class="desc" id="orderDate"></dd>
+                            </div>
+                        </dl>
+                    </article>
+                </section>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+
+    </footer>
+</body>
+<script type="module" src="/assets/js/common.js"></script>
+<script type="module" src="./checkout-result.js"></script>
+
+</html>

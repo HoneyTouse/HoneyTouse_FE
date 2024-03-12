@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>꿀단집</title>
+
+    <!-- 웹 폰트 나눔스퀘어 네오 -->
+    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="mypage.css">
+    <link rel="stylesheet" href="/checkout/checkout.css">
+    <link rel="stylesheet" href="/order-list/order-list.css">
+    <script src="https://kit.fontawesome.com/931727edad.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <header class="header"></header>
+
+  <section class = "mypage">
+    <div class = "inner">
+      <div class = "contents">
+        <aside class = "side">
+          <h1>마이페이지</h1>
+          <h2>쇼핑 정보</h2>
+          <ul>
+            <li><a a href = "/order-list/index.html">구매내역</a></li>
+            <li><a a href = "/basket/index.html">장바구니</a></li>
+          </ul>
+          <h2>내 정보</h2>
+          <ul>
+            <li><a class="profile_click">프로필관리</a></li>
+          </ul>
+        </aside>
+        <article class = "con">
+          <div class= "user_detail">
+            <label class= "user_thumb">
+              <img src= "../assets/img/admin_profile.jpg" alt= "사용자 이미지" srcset= "" class= "thumb_img">
+            </label>
+            <div class= "user_info">
+              <div class= "info_box">
+                <strong class= "userName" id = "userName"></strong> 
+                <p class= "email" id="userEmail"></p>
+                <div>
+                <button class="profile_btn">프로필관리</button>  
+                </div>              
+              </div>
+            </div>
+          </div>
+          <h2>배송 내역</h2>
+          <div class= "order-list__menu">
+            <a class= "order-list__menu__list" href= "">
+              <div class="order-list__menu__list__wrap">
+                <div class="order-list__menu__list__title">입금대기</div>
+                <div class="order-list__menu__list__value payment-pending-length">0</div>
+              </div>
+            </a>
+            <a class="order-list__menu__list" href="">
+              <div class="order-list__menu__list__wrap">
+                <div class="order-list__menu__list__title">결제완료</div>
+                <div class="order-list__menu__list__value payment-completed-length" >0</div>
+              </div>
+            </a>
+            <a class="order-list__menu__list" href="">
+              <div class="order-list__menu__list__wrap">
+                <div class="order-list__menu__list__title">배송준비</div>
+                <div class="order-list__menu__list__value delivery-pending-length">0</div>
+              </div>
+            </a>
+            <a class="order-list__menu__list" href="">
+              <div class="order-list__menu__list__wrap">
+                <div class="order-list__menu__list__title">배송중</div>
+                <div class="order-list__menu__list__value delivery-ongoing-length">0</div>
+              </div>
+            </a>
+            <a class="order-list__menu__list" href="">
+              <div class="order-list__menu__list__wrap">
+                <div class="order-list__menu__list__title">배송완료</div>
+                <div class="order-list__menu__list__value delivery-completed-length">0</div>
+              </div>
+            </a>
+            <a class="order-list__menu__list" href="">
+              <div class="order-list__menu__list__wrap">
+                <div class="order-list__menu__list__title">구매확정</div>
+                <div class="order-list__menu__list__value purchase-completed-length">0</div>
+              </div>
+            </a>
+          </div>
+          <!-- 최근 주문정보 넣는곳 -->
+          <section class="order-list detail" style="padding: 10px 0 0 0">
+            <div class="orders" id="main-content">
+              <h2>최근 주문정보</h2>
+
+              <ul id="orders">
+
+                <!-- 이 안에 li 태그들이 들어갑니다! -->
+              </ul>
+            </div>
+          </section>
+
+          <!-- 모달팝업레이어 -->
+          <div class="modal">
+            <div class="modal_body">
+              <div class="user_user_profile">
+              <h1>프로필관리</h1>
+              </div>
+              <div class ="user_user_info">
+                <label class= "user_user_thumb">
+                  <img src= "../assets/img/admin_profile.jpg" alt= "사용자 이미지"  class= "user_thumb_img">
+                  <input type="file" accept="image/*" class="myimg">
+                </label>
+              </div>
+              <div class="profile_body">
+                <div class ="profile_txt">
+                  <h2>프로필 정보</h2>
+                </div>
+                  <div class="user_name">
+                    <strong class="user_name" id="userNamePop">ID</strong>
+                  </div>
+                  <div class="user_email">
+                    <strong class="user_email" id="userEmailPop">Email</strong>
+                  </div>
+                  <div class ="user_change_pass">
+                    <h2>비밀번호 변경</h2>
+                    <form class="user_change_passform">
+                      <div class="user_pass_newform">
+                        <label class="user_pass_text">새 비밀번호</label>
+                        <div class="user_pass_tle">
+                          <input type="password" placeholder="바꿀 비밀번호를 입력해주세요." name="newPassword" class="user_pass_input">
+                        </div>
+                      </div>
+                      <div class="user_pass_newform2">
+                        <label class="user_pass_text">새 비밀번호 확인</label>
+                        <div class="user_pass_tle">
+                          <input type="password" placeholder="한번 더 입력해주세요." name="confirmedNewPassword" class="user_pass_input-02">
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="user_button">
+                    <button class ="user_agree">확인</button>
+                    <button class ="user_cancle">취소</button>
+                  </div>
+                </div>
+              </div> 
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>  
+    <!-- 헤더/푸터 공동 스크립트 -->
+    
+    
+    <footer class="footer"></footer>
+  </body>
+  <!-- 스크립트연결 -->
+<script type="module" src="/assets/js/common.js"></script>
+<script type="module" src="./mypage.js"></script>
+<!-- 헤더/푸터 공동 스크립트 -->
+<script type="module" src="/assets/js/common.js"></script>
+
+</html>
+
