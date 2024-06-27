@@ -102,7 +102,7 @@
 
 ### [보미]
 
-- <b>문제 1</b> : 로컬환경에서는 문제 없었으나, 빌드 후 페이지에 script 파일이 연동되지 않음.
+- <b>문제 1</b> : <u>로컬환경에서는 문제 없었으나, 빌드 후 페이지에 script 파일이 연동되지 않음.</u>
 - <b>원인</b> : type=module 속성이 없으면 JS파일이 연동되지 않음.
 - <b>해결과정</b> : 페이지별 스크립트 태그 안에 type=module 속성값 추가하여 해결함.
 <details>
@@ -113,19 +113,20 @@
 ![보미1-1](https://github.com/TripTeller-repository/TripTeller_BE/assets/127278410/ed6247d4-3995-47da-9d8e-923bf758d5d8)
 
 수정 후
+
 ![보미1-2](https://github.com/TripTeller-repository/TripTeller_BE/assets/127278410/b3e8fec3-cfbf-43c9-8d92-6ad7e9c3ab9c)
 
 </div>
 </details>
 <br>
 
-- <b>문제 2</b> : 프론트에서 서버로 데이터 POST 요청 시 에러 발생 (1)
+- <b>문제 2</b> : <u>프론트에서 서버로 데이터 POST 요청 시 에러 발생 (1)</u>
 - <b>원인</b> : 해당 스키마 안에 배열 형태가 있었으나, POST 요청으로 보낸 데이터에는 배열형태가 없었음.
 - <b>해결과정</b> : 데이터 형식을 변경하여 해결함.
 
 <br>
 
-- <b>문제 3</b> : 프론트에서 서버로 데이터 POST 요청 시 에러 발생 (2)
+- <b>문제 3</b> : <u>프론트에서 서버로 데이터 POST 요청 시 에러 발생 (2)</u>
 - <b>원인</b> : 서버 API가 jwt 토큰이 있어야 POST 요청이 가능하도록 설정되어 있었음.
 - <b>해결과정</b> : fecth - headers에 jwt 토큰 코드를 추가하여 해결함.
 <details>
@@ -138,7 +139,7 @@
 </details>
 <br>
 
-- <b>문제 4</b> : fetch 함수로 html 코드를 생성 후 적용되어야 하는 함수가 실행되지 않음.
+- <b>문제 4</b> : <u>fetch 함수로 html 코드를 생성 후 적용되어야 하는 함수가 실행되지 않음.</u>
 - <b>원인</b> : fetch 코드 바깥에 함수코드가 있어, html 코드 생성 전에 함수가 먼저 실행되었기 때문임.
 - <b>해결과정</b> : fetch - then 안에 함수를 넣어 비동기처리하여 해결함.
 <br>
@@ -146,12 +147,12 @@
 
 ### [승철]
 
-- <b>문제 1</b> : script type=module 명시시 html에 스크립트 바로 바인딩하면 함수를 불러올 수 없음.
+- <b>문제 1</b> : <u>script type=module 명시시 html에 스크립트 바로 바인딩하면 함수를 불러올 수 없음.</u>
 - <b>해결과정</b> : 
     - window객체에 올려 전역으로 사용하기<br>
     - 동적으로 생성되는 html은 부모태그에 이벤트 바인딩처리하기
-<br>
-- <b>문제 2</b> : input checkbox 클릭이벤트시 체크값이 반영 전으로 뜸.
+    <br><br>
+- <b>문제 2</b> : <u>input checkbox 클릭이벤트시 체크값이 반영 전으로 뜸.</u><br>
 - <b>해결과정</b> : 클릭이벤트가 아닌 onChange로 처리하여 오류가 해결됨.
 
 <details>
