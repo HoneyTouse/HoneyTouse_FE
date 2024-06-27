@@ -98,6 +98,7 @@
 
 </div>
 </details>
+<br>
 
 ### [보미]
 
@@ -161,6 +162,7 @@
 ![승철1](https://github.com/TripTeller-repository/TripTeller_BE/assets/127278410/842e956d-58b8-4a36-877f-46be6aad1567)
 
 <br>
+
 2. input checkbox 클릭이벤트시 체크값이 반영전으로 뜨던 현상<br>
 
 ![승철2](https://github.com/TripTeller-repository/TripTeller_BE/assets/127278410/1935f25a-65ae-4d6c-8097-04e53a839ddc)
