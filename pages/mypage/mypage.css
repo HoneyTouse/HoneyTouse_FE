@@ -603,3 +603,7 @@ a:link { color:black; }
 a:visited { color:black; }
 a:hover { color:gray; }
 
+/* 파일 업로드 창 안 보이게 */
+.user_user_thumb .myimg {
+  display: none;
+}
