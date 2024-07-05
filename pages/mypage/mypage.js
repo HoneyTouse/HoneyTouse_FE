@@ -1,4 +1,5 @@
 import { URL, hostUrl } from "../assets/js/constants.js";
+import imageCompression from "browser-image-compression";
 
 // 모달팝업 선택자 모음
 const modal = document.querySelector(".modal");
@@ -248,37 +249,71 @@ btnCloseModal2.addEventListener("click", () => {
   }
 });
 
-// 프로필 이미지 업로드
-fileInput.addEventListener("change", () => {
-  const file = fileInput.files[0];
-  if (file) {
-    const formData = new FormData();
-    formData.append("profileImage", file);
+// 압축된 파일을 서버에 업로드
+async function uploadToServer(compressedFile) {
+  const formData = new FormData();
+  formData.append("profileImage", compressedFile);
 
-    fetch(`${URL}/auth/upload-profile-image`, {
-      method: "POST",
-      headers: {
-        Authorization: "Bearer " + jwt,
-      },
-      body: formData,
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.success) {
-          userThumbImg.src = `${hostUrl}/${data.imageUrl}`;
-          alert("프로필 이미지가 업로드되었습니다.");
-        } else {
-          alert("프로필 이미지 업로드에 실패했습니다.");
-        }
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-        alert("프로필 이미지 업로드 중 오류가 발생했습니다.");
-      });
+  const response = await fetch(`${URL}/auth/upload-profile-image`, {
+    method: "POST",
+    headers: {
+      Authorization: "Bearer " + jwt,
+    },
+    body: formData,
+  });
+
+  const data = await response.json();
+  if (data.success) {
+    userThumbImg.src = `${hostUrl}/${data.imageUrl}`;
+    alert("프로필 이미지가 업로드되었습니다.");
   } else {
-    alert("업로드할 이미지를 선택해주세요.");
+    alert("프로필 이미지 업로드에 실패했습니다.");
   }
-});
+}
+
+// 이미지 압축
+async function handleImageUpload(event) {
+  const imageFile = event.target.files[0];
+  console.log("originalFile instanceof Blob", imageFile instanceof Blob); // true
+  console.log(`originalFile size ${imageFile.size / 1024 / 1024} MB`);
+
+  const options = {
+    maxSizeMB: 1, // 최대 용량 2MB
+    maxWidthOrHeight: 1920,
+    useWebWorker: true,
+  };
+
+  try {
+    let compressedFile = await imageCompression(imageFile, options);
+
+    if (compressedFile.size / 1024 / 1024 > 1) {
+      const resizeOptions = {
+        maxSizeMB: 1, // 최대 용량 1MB
+        maxWidthOrHeight: 1920 * 0.7, // 70% 크기
+        useWebWorker: true,
+      };
+      compressedFile = await imageCompression(imageFile, resizeOptions);
+    }
+
+    console.log(
+      "compressedFile instanceof Blob",
+      compressedFile instanceof Blob
+    );
+    console.log(`compressedFile size ${compressedFile.size / 1024 / 1024} MB`);
+
+    if (compressedFile.size / 1024 / 1024 <= 1) {
+      await uploadToServer(compressedFile);
+    } else {
+      alert("프로필 이미지가 1MB를 초과하여 업로드할 수 없습니다.");
+    }
+  } catch (error) {
+    console.log(error);
+    alert("프로필 이미지 업로드 중 오류가 발생했습니다.");
+  }
+}
+
+// 프로필 이미지 업로드
+fileInput.addEventListener("change", handleImageUpload);
 
 // 프로필관리 모달창 닫을 때 이미지 동기화
 btnCloseModal2.addEventListener("click", () => {
