@@ -36,7 +36,7 @@ jobs:
 
       - name: Set environment variables
         run: |
-          echo "HoneyTouse_HOST_URL=${{ secrets.HOST_URL }}" >> $GITHUB_ENV
+          echo "VITE_HOST_URL=${{ secrets.HOST_URL }}" >> $GITHUB_ENV
 
       - name: Vite build
         run: npm run build
