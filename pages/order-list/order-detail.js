@@ -77,7 +77,7 @@ function displayOrderInfo(OrderData) {
                     document.querySelector('.ordered-products').innerHTML += `
                         <li class="info_line">
                             <div class="product_img">
-                                <a href="/pdt-info/?id=${product._id}">
+                                <a href="/pdt-info/index.html?id=${product._id}">
                                     <img src="${product.image}" alt="${product.name}" />
                                 </a>
                             </div>

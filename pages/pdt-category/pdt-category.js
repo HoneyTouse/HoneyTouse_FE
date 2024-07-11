@@ -47,13 +47,13 @@ function checkProducts(products) {
       <div class="pdt-box">
         <div class="pdt-content-image">
           <i class="fa-solid fa-bag-shopping pl_basketBtn" onclick="goToBasketBtn(this)"></i>
-          <a href="/pdt-info/?id=${product._id}">
+          <a href="/pdt-info/index.html?id=${product._id}">
             <img src="${product.image}" alt="${product.name}">
           </a>
         </div>
         <div class="pdt-content-image-info">
           <p class="pdt-name">
-            <a href="/pdt-info/?id=${product._id}">${product.name}</a>
+            <a href="/pdt-info/index.html?id=${product._id}">${product.name}</a>
           </p>
           <p class="pdt-price">
             <span>${product.price.toLocaleString('ko-KR')}원</span>

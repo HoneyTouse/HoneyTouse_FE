@@ -60,7 +60,7 @@ function createProductLi(data) {
         `
             <li id="${data._id}">
                 <i class="fa-solid fa-bag-shopping pl_basketBtn" onclick="clickBasketBtn(this)"></i>
-                <a href="/pdt-info/?id=${data._id}" class="pl_img">
+                <a href="/pdt-info/index.html?id=${data._id}" class="pl_img">
                     <img src="${data.image}" alt="${data.name}">
                 </a>
                 <a href="" class="pl_title">
