@@ -251,7 +251,7 @@ function registerJoin(evt) {
                 container: 'custom-popup'
             }
         }).then((result)=> {
-            window.location.href = '/login/';
+            window.location.href = '/login/index.html';
         });
     })
         .catch(error => console.error('Error:', error));

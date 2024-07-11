@@ -288,7 +288,7 @@ $pdtBuyBtn.addEventListener('click', function() {
   const $selectedOptionsEls = document.querySelectorAll('#optionList li')
   if($selectedOptionsEls.length > 0) {
     addToBasket()
-    window.location.href = "/checkout/"
+    window.location.href = "/checkout/index.html"
   } else {
     alert("옵션을 선택해 주세요.")
   }
@@ -330,7 +330,7 @@ document.addEventListener("DOMContentLoaded",function() {
   })
 
   $goBasketBtn.addEventListener("click", function() {
-    window.location.href = "/basket/"
+    window.location.href = "/basket/index.html"
   })
 })
 
