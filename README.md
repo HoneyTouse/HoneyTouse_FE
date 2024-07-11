@@ -5,7 +5,7 @@
 > "특별한 감성을 담은 소품과 가구를 원하는 당신을 위한 꿀템이 가득!<br>
 > 저희 꿀단집에서 만나보세요.” 🍯🏠
 
-> 📌 <b>HoneyTouse URL</b> : http://honeytouseclient.s3-website.ap-northeast-2.amazonaws.com/<br>
+> 📌 <b>HoneyTouse URL</b> : https://www.honeytouse.com<br>
 > 📌 <b>HoneyTouse ReadMe</b> : https://github.com/HoneyTouse<br>
 > 📌 <b>HoneyTouse FrontEnd Github</b> : https://github.com/HoneyTouse/HoneyTouse_FE
 

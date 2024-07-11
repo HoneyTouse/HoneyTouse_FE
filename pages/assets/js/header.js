@@ -11,7 +11,7 @@ export const headerHTML = /*html*/`
                 </a>
             </li>
             <li>
-                <a href="/login/" class="h_mypage_text">
+                <a href="/login/index.html" class="h_mypage_text">
                     마이페이지
                 </a>
             </li>
@@ -31,7 +31,7 @@ export const headerHTML = /*html*/`
                 </a>
             </li>
             <li class="h_login">
-                <a href="/login/">
+                <a href="/login/index.html">
                     로그인
                 </a>
             </li>
@@ -54,12 +54,12 @@ export const headerHTML = /*html*/`
                 </a>
             </li>
             <li>
-                <a href="/login/" class="h_mypage-btn">
+                <a href="/login/index.html" class="h_mypage-btn">
                     <i class="fa-solid fa-user"></i>
                 </a>
             </li>
             <li>
-                <a href="/basket/">
+                <a href="/basket/index.html">
                     <i class="fa-solid fa-bag-shopping"></i>
                 </a>
             </li>
@@ -76,22 +76,22 @@ export const headerHTML = /*html*/`
                 <div class="h_category-list">
                     <ul>
                         <li>
-                        <a href="/pdt-category/?category=가구">가구</a>
+                        <a href="/pdt-category/index.html?category=가구">가구</a>
                         </li>
                         <li>
-                            <a href="/pdt-category/?category=패브릭">패브릭</a>
+                            <a href="/pdt-category/index.html?category=패브릭">패브릭</a>
                         </li>
                         <li>
-                            <a href="/pdt-category/?category=수납/정리">수납/정리</a>
+                            <a href="/pdt-category/index.html?category=수납/정리">수납/정리</a>
                         </li>
                         <li>
-                            <a href="/pdt-category/?category=생활용품">생활용품</a>
+                            <a href="/pdt-category/index.html?category=생활용품">생활용품</a>
                         </li>
                         <li>
-                            <a href="/pdt-category/?category=조명">조명</a>
+                            <a href="/pdt-category/index.html?category=조명">조명</a>
                         </li>
                         <li>
-                            <a href="/pdt-category/?category=인테리어 소품">인테리어 소품</a>
+                            <a href="/pdt-category/index.html?category=인테리어 소품">인테리어 소품</a>
                         </li>
                     </ul>
 

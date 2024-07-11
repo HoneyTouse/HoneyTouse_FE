@@ -171,13 +171,13 @@ fetch(`${URL}/orders`, {
 
                             ${order.status}<span class="_date sub-text">${order.updatedAt.slice(0, 10)}</span>
 
-                            <a href="/order-list/"><span>상세보기>></span></a>
+                            <a href="/order-list/index.html"><span>상세보기>></span></a>
                         </p>
                         <div class="order_content">
                             <ul class="ordered-products">
                                 <li class="info_line">
                                     <div class="product_img">
-                                        <a href="/pdt-info/?id=${product._id}">
+                                        <a href="/pdt-info/index.html?id=${product._id}">
                                             <img src="${product.image}" alt="Product Image" />
                                         </a>
                                     </div>
