@@ -31,7 +31,7 @@ export const headerHTML = /*html*/`
                 </a>
             </li>
             <li class="h_login">
-                <a href="/login/index.html">
+                <a href="/login/">
                     로그인
                 </a>
             </li>

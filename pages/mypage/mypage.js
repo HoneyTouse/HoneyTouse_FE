@@ -143,6 +143,16 @@ fetch(`${URL}/orders`, {
 })
   .then((response) => response.json())
   .then((data) => {
+    // 데이터가 없거나 주문 목록이 비어있을 때
+    if (!data || !data.data || data.data.length === 0) {
+      const orderContainer = document.getElementById("orders");
+      const li = document.createElement("li");
+      li.classList.add("info-product", "info-order");
+      li.innerHTML = `<p>주문 내역이 없습니다.</p>`;
+      orderContainer.appendChild(li); // 새로운 주문 요소를 주문 목록에 추가
+      return;
+    }
+
     const order = data.data[data.data.length - 1];
     const orderContainer = document.getElementById("orders"); // 주문 목록을 표시할 요소 선택
 
@@ -150,6 +160,16 @@ fetch(`${URL}/orders`, {
     li.classList.add("info-product", "info-order");
 
     let productId = order.product[0].id;
+
+    // Product ID가 없을 때
+    if (!productId) {
+      const li = document.createElement("li");
+      li.classList.add("info-product", "info-order");
+      li.innerHTML = `<p>주문 내역이 없습니다.</p>`;
+      orderContainer.appendChild(li); // 새로운 주문 요소를 주문 목록에 추가
+      return; // Early exit to avoid further processing
+    }
+
     fetch(`${URL}/products/` + productId, {
       method: "GET",
       headers: {
