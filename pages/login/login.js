@@ -99,7 +99,7 @@ function checkLoginStatus() {
 
   // JWT가 있으면 사용자가 로그인 상태라는 뜻이므로, 마이페이지로 리다이렉트합니다.
   if (jwt !== null && jwt !== undefined) {
-    location.href = "/mypage/mypage.html";
+    location.href = "/mypage/index.html";
   }
 }
 

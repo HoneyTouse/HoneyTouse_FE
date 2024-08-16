@@ -61,8 +61,8 @@ window.addEventListener("load", () => {
   const $hLogin = document.querySelector(".h_login");
   const $hLoginOut = document.querySelector(".h_login-out");
   if (jwt) {
-    $hMypageBtn.href = "/mypage/";
-    $hMypageText.href = "/mypage/";
+    $hMypageBtn.href = "/mypage/index.html";
+    $hMypageText.href = "/mypage/index.html";
     $hLoginOut.classList.remove("on");
     $hLogin.classList.add("on");
   }
