@@ -69,23 +69,37 @@ fetch(`${URL}/auth/me`, {
     const email = data.data.email;
     const name = data.data.name;
     const profileImage = data.data.profileImage;
-    const profileImageUrl = `${hostUrl}/${profileImage}`;
+
+    // 기본 프로필 이미지 URL
+    const defaultProfileImageUrl =
+      "https://honeytouseclient.s3.ap-northeast-2.amazonaws.com/assets/admin_profile-2b51e403.jpg";
+
+    // 프로필 이미지 URL
+    let profileImageUrl;
+
+    // profileImage가 존재하는 경우
+    if (profileImage) {
+      profileImageUrl = `${hostUrl}/${profileImage}`;
+    } else {
+      // profileImage가 없거나 비어있을 경우 기본 프로필 이미지 URL을 설정
+      profileImageUrl = defaultProfileImageUrl;
+    }
+
     console.log("마이페이지!!!!!!!!!!!!!!!!!! data", data);
 
+    // 이메일이 있을 경우 HTML 요소에 이메일과 이름을 설정
     if (email) {
       document.querySelector("#userEmailPop").innerHTML = email;
       document.querySelector("#userNamePop").innerHTML = `${name} 님`;
     }
-    if (profileImage) {
-      userThumbImg.src = profileImageUrl;
-      console.log("프로필이미지 있을 때 userThumbImg.src", userThumbImg.src)
-    }
-    console.log("프로필이미지 없을 때 userThumbImg.src", userThumbImg.src)
+
+    // 프로필 이미지 URL을 설정하고 콘솔에 로그를 출력
+    userThumbImg.src = profileImageUrl;
+    console.log("프로필 이미지 URL", userThumbImg.src);
   })
   .catch((error) => {
     console.error("Error", error);
   });
-
 // 배송내역
 fetch(`${URL}/orders`, {
   method: "GET",
