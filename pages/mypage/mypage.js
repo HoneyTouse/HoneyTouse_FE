@@ -78,7 +78,9 @@ fetch(`${URL}/auth/me`, {
     }
     if (profileImage) {
       userThumbImg.src = profileImageUrl;
+      console.log("프로필이미지 있을 때 userThumbImg.src", userThumbImg.src)
     }
+    console.log("프로필이미지 없을 때 userThumbImg.src", userThumbImg.src)
   })
   .catch((error) => {
     console.error("Error", error);
