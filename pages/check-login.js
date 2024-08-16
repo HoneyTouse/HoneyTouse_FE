@@ -11,7 +11,7 @@ function isLoggedIn() {
   if (token !== null && token !== undefined) {
     isLoggedIn = true;
   }
-
+  console.log("isLoggedIn", isLoggedIn);
   return isLoggedIn;
 }
 
@@ -25,7 +25,7 @@ async function checkLoginStatusFromServer() {
 
     if (response.ok) {
       const data = await response.json();
-
+      console.log("data", data, "data.loggedIn", data.loggedIn);
       if (data.loggedIn) {
         // 로그인 상태일 경우, 토큰을 localStorage에 저장하고 메인 페이지로 리다이렉트
         localStorage.setItem("jwt", data.token);
