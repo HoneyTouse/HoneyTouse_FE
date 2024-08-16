@@ -24,12 +24,12 @@ btnCloseModal.addEventListener("click", () => {
   modal.style.display = "none";
 });
 
-// 유저 정보 불러오기 (마이페이지 메인)
+// 유저 정보 불러오기 (마이페이지 메인 및 팝업)
 fetch(`${URL}/auth/me`, {
   method: "GET",
   headers: {
     "Content-Type": "application/json",
-    Authorization: "Bearer " + localStorage.getItem("jwt"),
+    Authorization: "Bearer " + jwt,
   },
 })
   .then((response) => response.json())
@@ -37,69 +37,42 @@ fetch(`${URL}/auth/me`, {
     const email = data.data.email;
     const name = data.data.name;
     const profileImage = data.data.profileImage;
-    let profileImageUrl;
 
-    if (profileImage && profileImage !== "") {
-      profileImageUrl = `${hostUrl}/${profileImage}`;
-    } else {
-      profileImageUrl = "../assets/img/admin_profile.jpg";
-    }
-    console.log("profileImageUrl", profileImageUrl);
-    outerThumbImg.src = profileImageUrl;
-
-    if (email) {
-      document.querySelector("#userEmail").innerHTML = email;
-      document.querySelector("#userName").innerHTML = `${name} 님`;
-    }
-  })
-  .catch((error) => {
-    console.error("Error", error);
-  });
-
-// 유저 정보 불러오기(팝업)
-fetch(`${URL}/auth/me`, {
-  method: "GET",
-  headers: {
-    "Content-Type": "application/json",
-    Authorization: "Bearer " + localStorage.getItem("jwt"),
-  },
-})
-  .then((response) => response.json())
-  .then((data) => {
-    const email = data.data.email;
-    const name = data.data.name;
-    const profileImage = data.data.profileImage;
+    console.log("서버에서 가져온 profileImage", profileImage);
 
     // 기본 프로필 이미지 URL
     const defaultProfileImageUrl =
       "https://honeytouseclient.s3.ap-northeast-2.amazonaws.com/assets/admin_profile-2b51e403.jpg";
 
-    // 프로필 이미지 URL
+    // 프로필 이미지 URL 결정
     let profileImageUrl;
-
-    // profileImage가 존재하는 경우
-    if (profileImage) {
-      profileImageUrl = `${hostUrl}/${profileImage}`;
+    if (profileImage && profileImage !== "") {
+      profileImageUrl =
+        profileImage.startsWith("http://") ||
+        profileImage.startsWith("https://")
+          ? profileImage
+          : `${hostUrl}/${profileImage}`;
     } else {
-      // profileImage가 없거나 비어있을 경우 기본 프로필 이미지 URL을 설정
       profileImageUrl = defaultProfileImageUrl;
     }
+    console.log("profileImageUrl", profileImageUrl);
 
-    console.log("마이페이지!!!!!!!!!!!!!!!!!! data", data);
-
-    // 이메일이 있을 경우 HTML 요소에 이메일과 이름을 설정
+    // 마이페이지 정보 업데이트
     if (email) {
-      document.querySelector("#userEmailPop").innerHTML = email;
-      document.querySelector("#userNamePop").innerHTML = `${name} 님`;
+      document.querySelector("#userEmail").innerHTML = email;
+      document.querySelector("#userName").innerHTML = `${name} 님`;
     }
+    outerThumbImg.src = profileImageUrl; // 프로필 이미지 업데이트
 
-    // 프로필 이미지 URL을 설정하고 콘솔에 로그를 출력
-    userThumbImg.src = profileImageUrl;
-    console.log("프로필 이미지 URL", userThumbImg.src);
+    // 팝업 정보 업데이트
+    document.querySelector("#userEmailPop").innerHTML = email;
+    document.querySelector("#userNamePop").innerHTML = `${name} 님`;
+    userThumbImg.src = profileImageUrl; // 팝업 프로필 이미지 업데이트
   })
   .catch((error) => {
     console.error("Error", error);
   });
+
 // 배송내역
 fetch(`${URL}/orders`, {
   method: "GET",
