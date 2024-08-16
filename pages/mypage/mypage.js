@@ -145,27 +145,29 @@ fetch(`${URL}/orders`, {
   .then((data) => {
     // 데이터가 없거나 주문 목록이 비어있을 때
     if (!data || !data.data || data.data.length === 0) {
-      productErrorHandling();
+      const orderContainer = document.getElementById("orders");
+      const li = document.createElement("li");
+      li.classList.add("info-product", "info-order");
+      li.innerHTML = `<p>주문 내역이 없습니다.</p>`;
+      orderContainer.appendChild(li); // 새로운 주문 요소를 주문 목록에 추가
       return;
     }
 
     const order = data.data[data.data.length - 1];
     const orderContainer = document.getElementById("orders"); // 주문 목록을 표시할 요소 선택
 
-    if (!order || !order.product || order.product.length === 0) {
-      productErrorHandling();
-      return; // 주문이 없으면 이 함수 실행 중단
-    }
-
     const li = document.createElement("li");
     li.classList.add("info-product", "info-order");
 
     let productId = order.product[0].id;
 
-    // 주문 내역 혹은 Product ID가 없을 때
+    // Product ID가 없을 때
     if (!productId) {
-      productErrorHandling();
-      return;
+      const li = document.createElement("li");
+      li.classList.add("info-product", "info-order");
+      li.innerHTML = `<p>주문 내역이 없습니다.</p>`;
+      orderContainer.appendChild(li); // 새로운 주문 요소를 주문 목록에 추가
+      return; // Early exit to avoid further processing
     }
 
     fetch(`${URL}/products/` + productId, {
@@ -178,11 +180,6 @@ fetch(`${URL}/orders`, {
       .then((response) => response.json())
       .then((pdtObject) => {
         const product = pdtObject.data;
-
-        if (!product) {
-          productErrorHandling();
-          return;
-        }
 
         // 주문 정보를 li 요소에 추가
         li.innerHTML = `
@@ -343,15 +340,3 @@ btnCloseModal2.addEventListener("click", () => {
   modal.style.display = "none";
   outerThumbImg.src = userThumbImg.src;
 });
-
-// 에러처리를 위한 함수
-// 주문내역이 없거나 주문 데이터를 불러올 수 없을 때 일관되게 처리
-const productErrorHandling = () => {
-  const orderContainer = document.getElementById("orders");
-  const li = document.createElement("li");
-  li.classList.add("info-product", "info-order");
-  li.innerHTML = `<p>주문 내역이 없습니다.</p>`;
-  orderContainer.appendChild(li); // 새로운 주문 요소를 주문 목록에 추가
-
-  return;
-};
