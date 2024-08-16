@@ -1,5 +1,6 @@
 import { headerHTML } from "./header";
 import { footerHTML } from "./footer";
+import { URL } from "./constants";
 
 // HTML 로딩이 완료된 후 실행할 코드
 window.addEventListener("load", () => {
@@ -66,13 +67,37 @@ window.addEventListener("load", () => {
     $hLogin.classList.add("on");
   }
 
-  //로그아웃 버튼 클릭 이벤트
+  // 로그아웃 버튼 클릭 이벤트
   $hLoginOut.addEventListener("click", (e) => {
     e.preventDefault();
-    localStorage.removeItem("jwt"); //토큰 삭제
-    location.href = "/"; //새로고침
+
+    let isSocialLogIn = sessionStorage.getItem("isSocialLogIn");
+    console.log("isSocialLogIn", isSocialLogIn);
+    if (isSocialLogIn) {
+      logout();
+    }
   });
 });
+
+// 로그아웃
+async function logout() {
+  try {
+    const response = await fetch(`${URL}/auth/sign-out`, {
+      method: "POST",
+      credentials: "include",
+    });
+
+    if (response.ok) {
+      localStorage.removeItem("jwt"); // 로컬스토리지의 토큰 삭제
+      sessionStorage.removeItem("isSocialLogIn");
+      location.href = "/"; // 새로고침
+    } else {
+      console.error("Logout failed");
+    }
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}
 
 function createsearchRecent(text) {
   return (
