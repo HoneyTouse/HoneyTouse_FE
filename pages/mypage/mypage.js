@@ -70,6 +70,7 @@ fetch(`${URL}/auth/me`, {
     const name = data.data.name;
     const profileImage = data.data.profileImage;
     const profileImageUrl = `${hostUrl}/${profileImage}`;
+    console.log("마이페이지!!!!!!!!!!!!!!!!!! data", data)
 
     if (email) {
       document.querySelector("#userEmailPop").innerHTML = email;
