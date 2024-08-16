@@ -1,6 +1,6 @@
 import Swal from "sweetalert2";
 import { URL } from "/assets/js/constants";
-import { handleGoogleLoginRedirect } from "./google-login";
+import { handleGoogleLoginRedirect, handleToken } from "./google-login.js";
 
 //유호성체크
 const $loginEmail = document.querySelector(".login_email");
@@ -112,6 +112,9 @@ if (googleLoginButton) {
     await handleGoogleLoginRedirect(); // Google 로그인 페이지로 리디렉션
   });
 }
+
+// 페이지 로드 시 토큰 처리
+window.addEventListener("load", handleToken);
 
 // 로그인 페이지 로드될 때마다 로그인 여부 확인
 checkLoginStatus();
