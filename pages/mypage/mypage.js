@@ -38,8 +38,6 @@ fetch(`${URL}/auth/me`, {
     const name = data.data.name;
     const profileImage = data.data.profileImage;
 
-    console.log("서버에서 가져온 profileImage", profileImage);
-
     // 기본 프로필 이미지 URL
     const defaultProfileImageUrl =
       "https://honeytouseclient.s3.ap-northeast-2.amazonaws.com/assets/admin_profile-2b51e403.jpg";
@@ -55,7 +53,6 @@ fetch(`${URL}/auth/me`, {
     } else {
       profileImageUrl = defaultProfileImageUrl;
     }
-    console.log("profileImageUrl", profileImageUrl);
 
     // 마이페이지 정보 업데이트
     if (email) {
@@ -284,8 +281,8 @@ async function uploadToServer(compressedFile) {
 // 이미지 압축
 async function handleImageUpload(event) {
   const imageFile = event.target.files[0];
-  console.log("originalFile instanceof Blob", imageFile instanceof Blob); // true
-  console.log(`originalFile size ${imageFile.size / 1024 / 1024} MB`);
+  // console.log("originalFile instanceof Blob", imageFile instanceof Blob); // true
+  // console.log(`originalFile size ${imageFile.size / 1024 / 1024} MB`);
 
   const options = {
     maxSizeMB: 1, // 최대 용량 2MB
@@ -305,11 +302,11 @@ async function handleImageUpload(event) {
       compressedFile = await imageCompression(imageFile, resizeOptions);
     }
 
-    console.log(
-      "compressedFile instanceof Blob",
-      compressedFile instanceof Blob
-    );
-    console.log(`compressedFile size ${compressedFile.size / 1024 / 1024} MB`);
+    // console.log(
+    //   "compressedFile instanceof Blob",
+    //   compressedFile instanceof Blob
+    // );
+    // console.log(`compressedFile size ${compressedFile.size / 1024 / 1024} MB`);
 
     if (compressedFile.size / 1024 / 1024 <= 1) {
       await uploadToServer(compressedFile);

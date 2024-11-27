@@ -72,7 +72,7 @@ window.addEventListener("load", () => {
     e.preventDefault();
 
     let isSocialLogIn = sessionStorage.getItem("isSocialLogIn");
-    console.log("isSocialLogIn", isSocialLogIn);
+
     if (isSocialLogIn) {
       logout();
     }

@@ -21,7 +21,7 @@ function fetchCategoriesPage() {
     })
     .then((data) => {
       const categories = data.data;
-      console.log(categories);
+      // console.log(categories);
       document.getElementById("content").innerHTML = `
           <div id="category-list">
           ${categories
@@ -47,7 +47,7 @@ function fetchCategoriesPage() {
 
 window.editCategory = function editCategory(categoryId, categoryName) {
   const newName = prompt("새로운 카테고리 이름을 입력하세요", categoryName);
-  console.log(categoryId, newName);
+  // console.log(categoryId, newName);
   if (newName === null || newName.trim() === "") {
     return;
   }
@@ -55,7 +55,7 @@ window.editCategory = function editCategory(categoryId, categoryName) {
   const updatedData = {
     name: newName,
   };
-  console.log(updatedData.name);
+  // console.log(updatedData.name);
   const jwt = localStorage.getItem("jwt");
 
   fetch(`${URL}/admin/categories/${categoryId}`, {
@@ -70,7 +70,7 @@ window.editCategory = function editCategory(categoryId, categoryName) {
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
-      console.log("카테고리 수정 성공");
+      // console.log("카테고리 수정 성공");
       fetchCategoriesPage();
     })
     .catch((error) => {
@@ -94,7 +94,7 @@ window.deleteCategory = function deleteCategory(categoryId) {
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
-      console.log("카테고리 삭제 성공");
+      // console.log("카테고리 삭제 성공");
       fetchCategoriesPage();
     })
     .catch((error) => {

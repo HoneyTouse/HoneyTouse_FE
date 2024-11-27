@@ -25,7 +25,7 @@ window.onload = async () => {
 
   const userData = await user.json();
   const role = userData.data.role;
-  console.log(role);
+  // console.log(role);
 
   if (role !== "admin") {
     // 권한이 없는 사용자 처리

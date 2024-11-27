@@ -155,7 +155,7 @@ function confirmEmail(evt) {
         body: JSON.stringify(data),
     }).then(response => response.json())
         .then(data => {
-            console.log(data);
+            // console.log(data);
             const $emailWrap02 = document.querySelector('.email-wrap-02');
             if (data.data == '이메일이 성공적으로 인증되었습니다.') {
                 isconfirmEmail = true;
@@ -193,7 +193,7 @@ function confirmEmail(evt) {
 const $joinConfirmEmailBtn = document.querySelector('.join_confirm-email');
 $joinConfirmEmailBtn.addEventListener("click", (e) => {
     e.preventDefault();
-    console.log(e);
+    // console.log(e);
     confirmEmail(e);
 })
 

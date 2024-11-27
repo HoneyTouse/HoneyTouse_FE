@@ -77,7 +77,7 @@ window.pending = function pending() {
     })
     .then((data) => {
       const orders = data.data;
-      console.log(orders.length);
+      // console.log(orders.length);
       document.getElementById("content").innerHTML = `
           <div id="order-list">
           ${orders
@@ -125,7 +125,7 @@ window.paid = function paid() {
     })
     .then((data) => {
       const orders = data.data;
-      console.log(orders);
+      // console.log(orders);
       document.getElementById("content").innerHTML = `
           <div id="order-list">
           ${orders
@@ -173,7 +173,7 @@ window.preparing = function preparing() {
     })
     .then((data) => {
       const orders = data.data;
-      console.log(orders);
+      // console.log(orders);
       document.getElementById("content").innerHTML = `
           <div id="order-list">
           ${orders
@@ -221,7 +221,7 @@ window.shipping = function shipping() {
     })
     .then((data) => {
       const orders = data.data;
-      console.log(orders);
+      // console.log(orders);
       document.getElementById("content").innerHTML = `
           <div id="order-list">
           ${orders
@@ -269,7 +269,7 @@ window.delivered = function delivered() {
     })
     .then((data) => {
       const orders = data.data;
-      console.log(orders);
+      // console.log(orders);
       document.getElementById("content").innerHTML = `
           <div id="order-list">
           ${orders
@@ -317,7 +317,7 @@ window.confirmed = function confirmed() {
     })
     .then((data) => {
       const orders = data.data;
-      console.log(orders);
+      // console.log(orders);
       document.getElementById("content").innerHTML = `
           <div id="order-list">
           ${orders
@@ -352,7 +352,7 @@ window.confirmed = function confirmed() {
 window.editOrder = function editOrder(orderId, status, memo) {
   const newStatus = prompt("새로운 주문 상태를 입력하세요:", status);
   const newMemo = prompt("새로운 주문 메모를 입력하세요:", memo);
-  console.log(orderId, newStatus);
+  // console.log(orderId, newStatus);
   if (
     newStatus === null ||
     newStatus.trim() === "" ||
@@ -380,7 +380,7 @@ window.editOrder = function editOrder(orderId, status, memo) {
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
-      console.log("주문 수정 성공");
+      // console.log("주문 수정 성공");
       fetchOrdersPage(); // 수정 후 페이지 다시 로드
     })
     .catch((error) => {
@@ -405,7 +405,7 @@ window.deleteOrder = function deleteOrder(id) {
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
-      console.log("주문 삭제 성공");
+      // console.log("주문 삭제 성공");
       fetchOrdersPage(); // 삭제 후 페이지 다시 로드
     })
     .catch((error) => {

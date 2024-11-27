@@ -61,7 +61,6 @@ function registerLogin(evt) {
   })
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
       const jwt = data.data.token;
       // JWT를 로컬 스토리지에 저장합니다.
       localStorage.setItem("jwt", jwt);

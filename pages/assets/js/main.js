@@ -161,7 +161,7 @@ function clickBasketBtn(e) {
                     },
                 })
             }
-            console.log(basketItemList);
+            // console.log(basketItemList);
             localStorage.setItem('basketItemList', JSON.stringify(basketItemList));
             Swal.fire({
                 title: "장바구니에 담겼습니다.",

@@ -19,7 +19,7 @@ function fetchUsersPage() {
     .then((response) => response.text())
     .then((data) => {
       const users = JSON.parse(data).data;
-      console.log(users);
+      // console.log(users);
       document.getElementById("content").innerHTML = `
       <div id="user-list">
       ${users

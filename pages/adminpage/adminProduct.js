@@ -18,7 +18,7 @@ function fetchProductsPage() {
     .then((response) => response.json()) // response를 JSON 형식으로 파싱
     .then((data) => {
       const products = data.data;
-      console.log(products); // 확인을 위한 로그
+      // console.log(products); // 확인을 위한 로그
       document.getElementById("content").innerHTML = `
           <div id="product-list">
           ${products
@@ -95,7 +95,7 @@ window.editProduct = function editProduct(
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
-      console.log("상품 수정 성공");
+      // console.log("상품 수정 성공");
       fetchProductsPage(); // 수정 후 페이지 다시 로드
     })
     .catch((error) => {
@@ -121,7 +121,7 @@ window.deleteProduct = function deleteProduct(id) {
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
-      console.log("상품 삭제 성공");
+      // console.log("상품 삭제 성공");
       fetchProductsPage(); // 삭제 후 페이지 다시 로드
     })
     .catch((error) => {

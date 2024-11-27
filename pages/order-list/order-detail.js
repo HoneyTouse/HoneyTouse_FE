@@ -38,7 +38,7 @@ async function fetchOrderData(orderId) {
 function displayOrderInfo(OrderData) {
     if (OrderData) {
         const Order = OrderData.data
-        console.log(Order)
+        // console.log(Order)
         document.querySelector('.order-status').textContent = Order.status;
         document.querySelector('.order-status').innerHTML += `
             <span class="_date sub-text">${Order.updatedAt.slice(0, 10)}</span>
@@ -184,14 +184,14 @@ function autoHypenPhone(str) {
 
 function createBtnList(item) {
     if(item.status === '배송 중') {
-        console.log('배송 중');
+        // console.log('배송 중');
         return `
         <li>
             <button class="btn-order-detail" id="btnTracking">배송 조회</button>
         </li>
         `;
     } else if(item.status === '배송 완료') {
-        console.log('배송 완료');
+        // console.log('배송 완료');
         return `
         <li>
             <button class="btn-order-detail" id="btnTracking">배송 조회</button>
@@ -201,10 +201,10 @@ function createBtnList(item) {
         </li>
         `;
     } else if(item.status === '구매 확정') {
-        console.log('구매 확정');
+        // console.log('구매 확정');
         return;
     } else {
-        console.log('그 외');
+        // console.log('그 외');
         return `
         <li>
             <button class="btn-order-detail" id="btnModifyOrder">주문 수정</button>

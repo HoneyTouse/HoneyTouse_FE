@@ -32,7 +32,7 @@ async function fetchPdtData(productId) {
 function displayPdtInfo(pdtData) {
   if (pdtData) {
     const pdt = pdtData.data
-    console.log(pdt)
+    // console.log(pdt)
     document.querySelector('.pdt-brand').textContent = pdt.brand
     document.querySelector('.pdt-name').textContent = pdt.name
     document.querySelector('.pdt-number').textContent = `${pdt.price.toLocaleString('ko-KR')}`

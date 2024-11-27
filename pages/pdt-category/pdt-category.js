@@ -28,7 +28,7 @@ async function productsByCategory(categoryName) {
     }
     updateCategoryName(categoryName)
     checkProducts(resData.data)
-    console.log(resData.data)
+    // console.log(resData.data)
   } catch (error) {
     console.error('제품을 조회하는 중 에러가 발생했습니다:', error)
   }
@@ -94,7 +94,7 @@ function goToBasketBtn(e) {
                   },
               })
           }
-          console.log(basketItemList);
+          // console.log(basketItemList);
           localStorage.setItem('basketItemList', JSON.stringify(basketItemList));
           Swal.fire({
               title: "장바구니에 담겼습니다.",
