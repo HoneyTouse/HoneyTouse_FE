@@ -62,8 +62,10 @@ function registerLogin(evt) {
     .then((response) => response.json())
     .then((data) => {
       const jwt = data.data.token;
-      // JWT를 로컬 스토리지에 저장합니다.
+
+      // JWT를 로컬 스토리지에 저장
       localStorage.setItem("jwt", jwt);
+
       Swal.fire({
         title: "로그인 성공",
         text: `환영합니다`,

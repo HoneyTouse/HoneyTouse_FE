@@ -84,18 +84,8 @@ window.addEventListener("load", () => {
 // 로그아웃
 async function logout() {
   try {
-    const response = await fetch(`${URL}/auth/sign-out`, {
-      method: "POST",
-      credentials: "include",
-    });
-
-    if (response.ok) {
-      localStorage.removeItem("jwt"); // 로컬스토리지의 토큰 삭제
-      sessionStorage.removeItem("isSocialLogIn");
-      location.href = "/"; // 새로고침
-    } else {
-      console.error("Logout failed");
-    }
+    localStorage.removeItem("jwt"); // 로컬스토리지의 토큰 삭제
+    location.href = "/"; // 새로고침
   } catch (error) {
     console.error("Error:", error);
   }

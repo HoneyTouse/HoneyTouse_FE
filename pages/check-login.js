@@ -1,55 +1,27 @@
-import { URL } from "./assets/js/constants.js";
-
-// 로그인 상태 확인 함수
-function isLoggedIn() {
-  // localStorage에 로그인 토큰이 있는지 확인
-  let isLoggedIn = false;
-
-  const token = localStorage.getItem("jwt");
-
-  // 토큰이 유효할 경우 로그인 여부에 true값을 넣어줌.
-  if (token !== null && token !== undefined) {
-    isLoggedIn = true;
-  }
-
-  return isLoggedIn;
-}
-
-// 서버로 로그인 상태를 확인하기 위해 요청을 보내는 함수
-async function checkLoginStatusFromServer() {
+function checkCookie() {
   try {
-    const response = await fetch(`${URL}/auth/status`, {
-      method: "GET",
-      credentials: "include", // 쿠키 전달
-    });
+    // 쿠키에서 "token"이 있는지 확인
+    const tokenCookie = document.cookie
+      .split('; ')
+      .find(row => row.startsWith('token='));
 
-    if (response.ok) {
-      const data = await response.json();
+    // "token" 쿠키가 없으면 아무 작업도 하지 않고 종료
+    // 구글 소셜로그인을 했을 경우에만 쿠키가 있으므로
+    // 일반 로그인 시에는 아무것도 없는게 정상임.
+    if (!tokenCookie) return;
 
-      if (data.loggedIn) {
-        // 로그인 상태일 경우, 토큰을 localStorage에 저장하고 메인 페이지로 리다이렉트
-        localStorage.setItem("jwt", data.token);
-        location.href = "/index.html";
-      } else {
-        // 로그인 상태가 아닐 경우, 메시지 로그
-        // console.log("로그인되지 않음");
-      }
-    } else {
-      console.error("로그인 상태 확인 중 오류 발생");
-    }
+    // "token" 쿠키가 있을 경우에만 처리
+    const token = tokenCookie.split('=')[1];
+
+    // 로컬 스토리지에 저장
+    localStorage.setItem('jwt', token);
+
+    // 쿠키에서 토큰 삭제
+    document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
   } catch (error) {
-    console.error("에러:", error);
+    console.error('Error while handling cookie and token:', error);
   }
 }
 
-// 로그인 상태를 확인하고, 로그인되어 있지 않으면 서버에 요청을 보냄
-async function initializeLoginStatus() {
-  if (!isLoggedIn()) {
-    await checkLoginStatusFromServer();
-  } else {
-    // console.log("사용자가 이미 로그인되어 있어 서버 요청이 필요하지 않음.");
-  }
-}
-
-// 메인 페이지 HTML이 로딩될 때 해당 함수가 호출됨
-initializeLoginStatus();
+// 메인 페이지에서 랜딩 시에 실행되도록 호출
+checkCookie();
