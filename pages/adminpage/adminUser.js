@@ -1,26 +1,27 @@
-import { URL } from "../assets/js/constants";
+import { makeFetchRequest } from '../assets/js/api';
+import { URL } from '../assets/js/constants';
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener('DOMContentLoaded', function () {
   // 회원 관리 버튼
-  document.getElementById("userBtn").addEventListener("click", function () {
+  document.getElementById('userBtn').addEventListener('click', function () {
     fetchUsersPage();
   });
 });
-// 회원 관리 페이지 표시 함수
-function fetchUsersPage() {
-  const jwt = localStorage.getItem("jwt");
 
-  fetch(`${URL}/admin/userInfo`, {
-    method: "GET",
-    headers: {
-      Authorization: "Bearer " + jwt,
-    },
-  })
-    .then((response) => response.text())
-    .then((data) => {
-      const users = JSON.parse(data).data;
-      // console.log(users);
-      document.getElementById("content").innerHTML = `
+// 회원 관리 페이지 표시 함수
+async function fetchUsersPage() {
+  const jwt = localStorage.getItem('jwt');
+
+  try {
+    const data = await makeFetchRequest(`${URL}/admin/userInfo`, {
+      method: 'GET',
+      headers: {
+        Authorization: 'Bearer ' + jwt,
+      },
+    });
+
+    const users = data.data;
+    document.getElementById('content').innerHTML = `
       <div id="user-list">
       ${users
         .map(
@@ -34,13 +35,12 @@ function fetchUsersPage() {
             <li><strong>역할:</strong> ${user.role}</li>
             <li><strong>주소: </strong>${user.address}</li>
             <li><strong>상세주소:</strong> ${user.addressDetail}</li>
-            </ul>`
+            </ul>`,
         )
-        .join("")}
+        .join('')}
       </div>
       `;
-    })
-    .catch((error) => {
-      console.error("회원 관리 페이지를 가져오는 중 오류 발생:", error);
-    });
+  } catch (error) {
+    console.error('회원 관리 페이지를 가져오는 중 오류 발생:', error);
+  }
 }

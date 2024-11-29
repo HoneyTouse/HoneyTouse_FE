@@ -45,7 +45,7 @@ pdt-content-category-inner > li {
   line-height: 20px;
   font-weight: 700;
   cursor: pointer;
-  color:#000;
+  color: #000;
 }
 .pdt-content-inner {
   width: 100%;
@@ -90,7 +90,6 @@ pdt-content-category-inner > li {
   font-size: 16px;
   opacity: 0.5;
   cursor: pointer;
-
 }
 .pdt-content-image > a > img {
   position: absolute;
@@ -98,8 +97,8 @@ pdt-content-category-inner > li {
   left: 50%;
   height: 100%;
   width: 100%;
-  transform: translate(-50%,-50%);
-  transition: transform .2s;
+  transform: translate(-50%, -50%);
+  transition: transform 0.2s;
   border-radius: 15px;
   box-sizing: border-box;
 }
@@ -111,15 +110,15 @@ pdt-content-category-inner > li {
   margin-top: 10px;
   overflow: hidden;
 }
-.pdt-content-image-info .pdt-name a{
+.pdt-content-image-info .pdt-name a {
   font-size: 15px;
   font-weight: 400;
   line-height: 18px;
   color: #000;
-  padding : 10px 0;
+  padding: 10px 0;
 }
 .pdt-price {
-  padding : 5px 0;
+  padding: 5px 0;
   font-size: 16px;
   line-height: 23px;
   font-weight: 700;

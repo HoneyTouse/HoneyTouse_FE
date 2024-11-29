@@ -9,9 +9,7 @@
 @import 'popup.css';
 @import 'footer.css';
 
-
 * {
   letter-spacing: -0.3px;
-  font-family: "NanumSquareNeo";
+  font-family: 'NanumSquareNeo';
 }
-

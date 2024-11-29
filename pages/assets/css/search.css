@@ -1,113 +1,112 @@
 .search {
-	display: none;
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	min-height: 100vh;
-	box-sizing: border-box;
-	background-color: #fff;
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100vh;
+  box-sizing: border-box;
+  background-color: #fff;
 }
 
 .search_close {
-	position: absolute;
-	top: 20px;
-	right: 30px;
+  position: absolute;
+  top: 20px;
+  right: 30px;
 }
 
 .search_close i {
-	font-size: 36px;
+  font-size: 36px;
 }
 
 .search.on {
-	display: flex;
+  display: flex;
 }
 
 .search_inner {
-	width: 100%;
-	max-width: 700px;
-	margin: 0px auto;
-	box-sizing: border-box;
-	padding: 80px 30px;
-	box-sizing: border-box;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
+  width: 100%;
+  max-width: 700px;
+  margin: 0px auto;
+  box-sizing: border-box;
+  padding: 80px 30px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-
 .search_form {
-	width: 100%;
-	position: relative;
-	margin-bottom: 20px;
+  width: 100%;
+  position: relative;
+  margin-bottom: 20px;
 }
 
 .search_form > input {
-	width: 100%;
-	border: none;
-	font-size: 16px;
-	padding-bottom: 10px;
-	font-weight: bold;
-	background-color: #FFF8EA;
-	padding: 14px 20px;
-	border-radius: 30px;
-	box-sizing: border-box;
+  width: 100%;
+  border: none;
+  font-size: 16px;
+  padding-bottom: 10px;
+  font-weight: bold;
+  background-color: #fff8ea;
+  padding: 14px 20px;
+  border-radius: 30px;
+  box-sizing: border-box;
 }
 .search_form > input:focus {
-    border: none;
-    border-bottom: 2px solid #FFC501;
+  border: none;
+  border-bottom: 2px solid #ffc501;
 }
-.search_form > input:focus-visible{
-	outline: none;
+.search_form > input:focus-visible {
+  outline: none;
 }
 
 .search_form button {
-	position: absolute;
-	bottom: 5px;
-	right: 10px;
-	padding: 10px;
-	color: #FFC501;
+  position: absolute;
+  bottom: 5px;
+  right: 10px;
+  padding: 10px;
+  color: #ffc501;
 }
 
 .search_form button i {
-	font-size: 18px;
+  font-size: 18px;
 }
 
 .search_recent > div {
-	display: flex;
-	align-items: end;
-	margin-bottom: 18px;
+  display: flex;
+  align-items: end;
+  margin-bottom: 18px;
 }
 
 .search_recent > div > button {
-    margin-left: 5px;
-    text-decoration: underline;
-    font-size: 12px;
+  margin-left: 5px;
+  text-decoration: underline;
+  font-size: 12px;
 }
 
 .search_recent h3 {
-	font-size: 15px;
+  font-size: 15px;
 }
 
 .search_recent ul {
-	display: flex;
-	margin-bottom: 50px;
+  display: flex;
+  margin-bottom: 50px;
 }
 
 .search_recent ul li {
-	margin-right: 5px;
+  margin-right: 5px;
 }
 
 .search_recent ul li a {
-	display: inline-block;
-	font-size: 14px;
-	padding: 7px 12px;
-	border-radius: 30px;
-	border: 1px solid #bbb;
-	color: #333;
+  display: inline-block;
+  font-size: 14px;
+  padding: 7px 12px;
+  border-radius: 30px;
+  border: 1px solid #bbb;
+  color: #333;
 }
 
 .search_banner > img {
-	max-width: 100%;
-	cursor: pointer;
+  max-width: 100%;
+  cursor: pointer;
 }

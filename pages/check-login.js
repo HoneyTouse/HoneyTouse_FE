@@ -1,9 +1,7 @@
 function checkCookie() {
   try {
     // 쿠키에서 "token"이 있는지 확인
-    const tokenCookie = document.cookie
-      .split('; ')
-      .find(row => row.startsWith('token='));
+    const tokenCookie = document.cookie.split('; ').find((row) => row.startsWith('token='));
 
     // "token" 쿠키가 없으면 아무 작업도 하지 않고 종료
     // 구글 소셜로그인을 했을 경우에만 쿠키가 있으므로

@@ -6,16 +6,10 @@
     <title>꿀단집</title>
 
     <!-- 웹 폰트 나눔스퀘어 네오 -->
-    <link
-      href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css"
-      rel="stylesheet"
-    />
+    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css" rel="stylesheet" />
     <link rel="stylesheet" href="/assets/css/style.css" />
     <link rel="stylesheet" href="./join.css" />
-    <script
-      src="https://kit.fontawesome.com/931727edad.js"
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://kit.fontawesome.com/931727edad.js" crossorigin="anonymous"></script>
 
     <script type="module" src="/assets/js/common.js"></script>
   </head>
@@ -41,12 +35,7 @@
                 연락처
                 <i class="fa-regular fa-circle-check"></i>
               </p>
-              <input
-                class="join_phone"
-                type="tel"
-                name="phoneNumber"
-                placeholder="01072527544"
-              />
+              <input class="join_phone" type="tel" name="phoneNumber" placeholder="01072527544" />
             </div>
 
             <div class="address-wrap">
@@ -54,21 +43,9 @@
                 주소
                 <i class="fa-regular fa-circle-check"></i>
               </p>
-              <input
-                id="join_postcode"
-                class="join_postcode"
-                type="text"
-                name="join_postcode"
-                placeholder="우편번호"
-              />
+              <input id="join_postcode" class="join_postcode" type="text" name="join_postcode" placeholder="우편번호" />
               <button class="ja_find">우편번호 찾기</button>
-              <input
-                id="join_address"
-                class="join_address"
-                type="text"
-                name="address"
-                placeholder="주소"
-              />
+              <input id="join_address" class="join_address" type="text" name="address" placeholder="주소" />
             </div>
 
             <div class="address-wrap-2">
@@ -97,12 +74,7 @@
                 이메일 주소
                 <i class="fa-regular fa-circle-check"></i>
               </p>
-              <input
-                class="join_email-01"
-                type="email"
-                name="email"
-                placeholder="예) kream@kream.co.kr"
-              />
+              <input class="join_email-01" type="email" name="email" placeholder="예) kream@kream.co.kr" />
               <button class="join_send-email">이메일 인증</button>
             </div>
 
@@ -111,12 +83,7 @@
                 이메일 인증번호 확인
                 <i class="fa-regular fa-circle-check"></i>
               </p>
-              <input
-                class="join_email-02"
-                type=""
-                name="email-check"
-                placeholder="이메일 인증번호"
-              />
+              <input class="join_email-02" type="" name="email-check" placeholder="이메일 인증번호" />
               <button class="join_confirm-email">인증 확인</button>
             </div>
 
@@ -125,15 +92,8 @@
                 비밀번호
                 <i class="fa-regular fa-circle-check"></i>
               </p>
-              <input
-                class="join_password-01"
-                type="password"
-                name="password"
-                maxlength="16"
-              />
-              <p class="input_error">
-                영문, 숫자, 특수문자를 조합해서 입력해주세요. (8-16자)
-              </p>
+              <input class="join_password-01" type="password" name="password" maxlength="16" />
+              <p class="input_error">영문, 숫자, 특수문자를 조합해서 입력해주세요. (8-16자)</p>
             </div>
 
             <div class="password-wrap-2">
@@ -141,12 +101,7 @@
                 비밀번호 확인
                 <i class="fa-regular fa-circle-check"></i>
               </p>
-              <input
-                class="join_password-02"
-                type="password"
-                name="password-check"
-                maxlength="16"
-              />
+              <input class="join_password-02" type="password" name="password-check" maxlength="16" />
             </div>
 
             <input class="join_submit" type="submit" value="JOIN" />
@@ -162,14 +117,14 @@
   <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
   <script type="module">
-    import { URL } from "../assets/js/constants.js";
+    import { URL } from '../assets/js/constants.js';
 
     // 폼 액션 URL 동적 생성되도록 함.
-    document.getElementById("joinForm").action = `${URL}/auth/sign-up`;
+    document.getElementById('joinForm').action = `${URL}/auth/sign-up`;
 
     //ja_find
-    const $jaFindBtn = document.querySelector(".ja_find");
-    $jaFindBtn.addEventListener("click", (e) => {
+    const $jaFindBtn = document.querySelector('.ja_find');
+    $jaFindBtn.addEventListener('click', (e) => {
       e.preventDefault();
       join_execDaumPostcode();
     });
@@ -181,11 +136,11 @@
 
           // 각 주소의 노출 규칙에 따라 주소를 조합한다.
           // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-          let addr = ""; // 주소 변수
-          let extraAddr = ""; // 참고항목 변수
+          let addr = ''; // 주소 변수
+          let extraAddr = ''; // 참고항목 변수
 
           //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
-          if (data.userSelectedType === "R") {
+          if (data.userSelectedType === 'R') {
             // 사용자가 도로명 주소를 선택했을 경우
             addr = data.roadAddress;
           } else {
@@ -194,32 +149,31 @@
           }
 
           // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
-          if (data.userSelectedType === "R") {
+          if (data.userSelectedType === 'R') {
             // 법정동명이 있을 경우 추가한다. (법정리는 제외)
             // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
-            if (data.bname !== "" && /[동|로|가]$/g.test(data.bname)) {
+            if (data.bname !== '' && /[동|로|가]$/g.test(data.bname)) {
               extraAddr += data.bname;
             }
             // 건물명이 있고, 공동주택일 경우 추가한다.
-            if (data.buildingName !== "" && data.apartment === "Y") {
-              extraAddr +=
-                extraAddr !== "" ? ", " + data.buildingName : data.buildingName;
+            if (data.buildingName !== '' && data.apartment === 'Y') {
+              extraAddr += extraAddr !== '' ? ', ' + data.buildingName : data.buildingName;
             }
             // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-            if (extraAddr !== "") {
-              extraAddr = " (" + extraAddr + ")";
+            if (extraAddr !== '') {
+              extraAddr = ' (' + extraAddr + ')';
             }
             // 조합된 참고항목을 해당 필드에 넣는다.
-            document.getElementById("join_extraAddress").value = extraAddr;
+            document.getElementById('join_extraAddress').value = extraAddr;
           } else {
-            document.getElementById("join_extraAddress").value = "";
+            document.getElementById('join_extraAddress').value = '';
           }
 
           // 우편번호와 주소 정보를 해당 필드에 넣는다.
-          document.getElementById("join_postcode").value = data.zonecode;
-          document.getElementById("join_address").value = addr;
+          document.getElementById('join_postcode').value = data.zonecode;
+          document.getElementById('join_address').value = addr;
           // 커서를 상세주소 필드로 이동한다.
-          document.getElementById("join_detailAddress").focus();
+          document.getElementById('join_detailAddress').focus();
         },
       }).open();
     }

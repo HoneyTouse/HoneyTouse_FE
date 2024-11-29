@@ -1,7 +1,7 @@
 import imgLogo from '../img/logo.png';
 import imgSearchBanner from '../img/search_banner.jpg';
 
-export const headerHTML = /*html*/`
+export const headerHTML = /*html*/ `
 <div class="h_wrap">
     <div class="h_top_nav">
         <ul>
@@ -127,4 +127,4 @@ export const headerHTML = /*html*/`
         </div>
     </div>
 </section>
-`
+`;

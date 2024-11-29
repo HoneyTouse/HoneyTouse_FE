@@ -31,7 +31,7 @@
 
 /* 폰트두깨종류 */
 .adminpage .semi-bold {
-  font-family: "NanumSquareNeoBold";
+  font-family: 'NanumSquareNeoBold';
 }
 
 .adminpage .bold {
@@ -39,14 +39,14 @@
 }
 
 .adminpage .heavy {
-  font-family: "NanumSquareNeoHeavy";
+  font-family: 'NanumSquareNeoHeavy';
 }
 
 .adminpage .contents {
   display: flex;
 }
 .adminpage .contents:after {
-  content: "";
+  content: '';
   display: block;
   clear: both;
 }
@@ -247,7 +247,7 @@
 .adminpage .order-list__menu__list:not(:last-of-type):after {
   position: absolute;
   display: block;
-  content: "";
+  content: '';
   width: 12px;
   height: 12px;
   transform: rotate(45deg);
