@@ -12,12 +12,14 @@
     <link rel="stylesheet" href="/assets/css/style.css" />
     <link rel="stylesheet" href="./adminpage.css" />
     <script src="https://kit.fontawesome.com/931727edad.js" crossorigin="anonymous"></script>
+    <script type="module" src="adminpage.js" defer></script>
   </head>
 
   <body>
     <header class="header"></header>
     <section class="adminpage">
-      <div class="inner">
+      <!---관리자 권한 확인 후에 보이도록 설정함-->>
+      <div class="inner" style="visibility: hidden">
         <div class="contents">
           <aside class="side">
             <a href="/adminpage/adminpage.html" style="font-size: 1.6rem; font-weight: bold">관리자페이지</a>
@@ -54,7 +56,6 @@
     <script type="module" src="../assets/js/common.js"></script>
     <footer class="footer"></footer>
     <!-- 스크립트연결 -->
-    <script type="module" src="adminpage.js"></script>
     <script type="module" src="adminUser.js"></script>
     <script type="module" src="adminOrder.js"></script>
     <script type="module" src="adminCategory.js"></script>

@@ -1,4 +1,5 @@
 import { URL } from '../assets/js/constants';
+import { makeFetchRequest } from '../assets/js/api';
 
 document.addEventListener('DOMContentLoaded', function () {
   document.getElementById('productBtn').addEventListener('click', function () {

@@ -1,3 +1,4 @@
+import { makeFetchRequest } from '../assets/js/api.js';
 import { URL, hostUrl } from '../assets/js/constants.js';
 import imageCompression from 'browser-image-compression';
 
@@ -25,14 +26,13 @@ btnCloseModal.addEventListener('click', () => {
 });
 
 // 유저 정보 불러오기 (마이페이지 메인 및 팝업)
-fetch(`${URL}/auth/me`, {
+makeFetchRequest(`${URL}/auth/me`, {
   method: 'GET',
   headers: {
     'Content-Type': 'application/json',
     Authorization: 'Bearer ' + jwt,
   },
 })
-  .then((response) => response.json())
   .then((data) => {
     const email = data.data.email;
     const name = data.data.name;
@@ -70,100 +70,95 @@ fetch(`${URL}/auth/me`, {
   });
 
 // 배송내역
-fetch(`${URL}/orders`, {
+makeFetchRequest(`${URL}/orders`, {
   method: 'GET',
   headers: {
     Authorization: 'Bearer ' + jwt,
     'Content-Type': 'application/json',
   },
-})
-  .then((response) => response.json())
-  .then((data) => {
-    const orders = data.data;
+}).then((data) => {
+  const orders = data.data;
 
-    //입금대기, 결제완료, 배송준비, 배송중, 배송완료, 구매확정
-    let PaymentPendingArr = [];
-    let PaymentCompletedArr = [];
-    let DeliveryPendingArr = [];
-    let DeliveryOngoingArr = [];
-    let DeliveryCompletedArr = [];
-    let PurchaseCompletedArr = [];
+  //입금대기, 결제완료, 배송준비, 배송중, 배송완료, 구매확정
+  let PaymentPendingArr = [];
+  let PaymentCompletedArr = [];
+  let DeliveryPendingArr = [];
+  let DeliveryOngoingArr = [];
+  let DeliveryCompletedArr = [];
+  let PurchaseCompletedArr = [];
 
-    data.data.forEach((el) => {
-      if (el.status == '결제 완료') {
-        PaymentCompletedArr.push(el);
-      }
-      if (el.status == '배송 준비') {
-        DeliveryPendingArr.push(el);
-      }
-      if (el.status == '배송 중') {
-        DeliveryOngoingArr.push(el);
-      }
-      if (el.status == '배송 완료') {
-        DeliveryCompletedArr.push(el);
-      }
-      if (el.status == '구매 확정') {
-        PurchaseCompletedArr.push(el);
-      }
-    });
-
-    document.querySelector('.payment-completed-length').innerHTML = `${PaymentCompletedArr.length}`;
-    document.querySelector('.delivery-pending-length').innerHTML = `${DeliveryPendingArr.length}`;
-    document.querySelector('.delivery-ongoing-length').innerHTML = `${DeliveryOngoingArr.length}`;
-    document.querySelector('.delivery-completed-length').innerHTML = `${DeliveryCompletedArr.length}`;
-    document.querySelector('.purchase-completed-length').innerHTML = `${PurchaseCompletedArr.length}`;
+  data.data.forEach((el) => {
+    if (el.status == '결제 완료') {
+      PaymentCompletedArr.push(el);
+    }
+    if (el.status == '배송 준비') {
+      DeliveryPendingArr.push(el);
+    }
+    if (el.status == '배송 중') {
+      DeliveryOngoingArr.push(el);
+    }
+    if (el.status == '배송 완료') {
+      DeliveryCompletedArr.push(el);
+    }
+    if (el.status == '구매 확정') {
+      PurchaseCompletedArr.push(el);
+    }
   });
 
+  document.querySelector('.payment-completed-length').innerHTML = `${PaymentCompletedArr.length}`;
+  document.querySelector('.delivery-pending-length').innerHTML = `${DeliveryPendingArr.length}`;
+  document.querySelector('.delivery-ongoing-length').innerHTML = `${DeliveryOngoingArr.length}`;
+  document.querySelector('.delivery-completed-length').innerHTML = `${DeliveryCompletedArr.length}`;
+  document.querySelector('.purchase-completed-length').innerHTML = `${PurchaseCompletedArr.length}`;
+});
+
 // 주문 목록 가져오기
-fetch(`${URL}/orders`, {
+makeFetchRequest(`${URL}/orders`, {
   method: 'GET',
   headers: {
     Authorization: 'Bearer ' + jwt,
     'Content-Type': 'application/json',
   },
-})
-  .then((response) => response.json())
-  .then((data) => {
-    // 데이터가 없거나 주문 목록이 비어있을 때
-    if (!data || !data.data || data.data.length === 0) {
-      const orderContainer = document.getElementById('orders');
-      const li = document.createElement('li');
-      li.classList.add('info-product', 'info-order');
-      li.innerHTML = `<p>주문 내역이 없습니다.</p>`;
-      orderContainer.appendChild(li); // 새로운 주문 요소를 주문 목록에 추가
-      return;
-    }
-
-    const order = data.data[data.data.length - 1];
-    const orderContainer = document.getElementById('orders'); // 주문 목록을 표시할 요소 선택
-
+}).then((data) => {
+  // 데이터가 없거나 주문 목록이 비어있을 때
+  if (!data || !data.data || data.data.length === 0) {
+    const orderContainer = document.getElementById('orders');
     const li = document.createElement('li');
     li.classList.add('info-product', 'info-order');
+    li.innerHTML = `<p>주문 내역이 없습니다.</p>`;
+    orderContainer.appendChild(li); // 새로운 주문 요소를 주문 목록에 추가
+    return;
+  }
 
-    let productId = order.product[0].id;
+  const order = data.data[data.data.length - 1];
+  const orderContainer = document.getElementById('orders'); // 주문 목록을 표시할 요소 선택
 
-    // Product ID가 없을 때
-    if (!productId) {
-      const li = document.createElement('li');
-      li.classList.add('info-product', 'info-order');
-      li.innerHTML = `<p>주문 내역이 없습니다.</p>`;
-      orderContainer.appendChild(li); // 새로운 주문 요소를 주문 목록에 추가
-      return; // Early exit to avoid further processing
-    }
+  const li = document.createElement('li');
+  li.classList.add('info-product', 'info-order');
 
-    fetch(`${URL}/products/` + productId, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: 'Bearer ' + jwt,
-      },
-    })
-      .then((response) => response.json())
-      .then((pdtObject) => {
-        const product = pdtObject.data;
+  let productId = order.product[0].id;
 
-        // 주문 정보를 li 요소에 추가
-        li.innerHTML = `
+  // Product ID가 없을 때
+  if (!productId) {
+    const li = document.createElement('li');
+    li.classList.add('info-product', 'info-order');
+    li.innerHTML = `<p>주문 내역이 없습니다.</p>`;
+    orderContainer.appendChild(li); // 새로운 주문 요소를 주문 목록에 추가
+    return; // Early exit to avoid further processing
+  }
+
+  makeFetchRequest(`${URL}/products/` + productId, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer ' + jwt,
+    },
+  })
+    .then((pdtObject) => {
+      const product = pdtObject.data;
+
+      // 주문 정보를 li 요소에 추가
+      li.innerHTML = `
                     <div class="section_title">
                         <h2 style="padding: 0">${formatDate(order.createdAt)}</h2>
                     </div>
@@ -195,13 +190,13 @@ fetch(`${URL}/orders`, {
                         </div>
                     </article>
                     `;
-      })
-      .catch((error) => {
-        console.error('Error fetching data', error);
-      });
+    })
+    .catch((error) => {
+      console.error('Error fetching data', error);
+    });
 
-    orderContainer.appendChild(li); // 새로운 주문 요소를 주문 목록에 추가
-  });
+  orderContainer.appendChild(li); // 새로운 주문 요소를 주문 목록에 추가
+});
 
 // 날짜를 YYYY-MM-DD 형식으로 변환하는 함수
 function formatDate(dateString) {
@@ -215,38 +210,34 @@ function formatDate(dateString) {
 // 비밀번호 변경
 btnCloseModal2.addEventListener('click', () => {
   if ($userPassInput.value == $userPassInput02.value) {
-    fetch(`${URL}/auth/me`, {
+    makeFetchRequest(`${URL}/auth/me`, {
       method: 'GET',
       headers: {
         Authorization: 'Bearer ' + jwt,
       },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        let email = data.data.email;
-        let address = data.data.address;
-        let addressDetail = data.data.addressDetail;
+    }).then((data) => {
+      let email = data.data.email;
+      let address = data.data.address;
+      let addressDetail = data.data.addressDetail;
 
-        let userData = {
-          email,
-          password: $userPassInput.value,
-          address,
-          addressDetail,
-        };
+      let userData = {
+        email,
+        password: $userPassInput.value,
+        address,
+        addressDetail,
+      };
 
-        fetch(`${URL}/auth/me`, {
-          method: 'PATCH',
-          headers: {
-            Authorization: 'Bearer ' + jwt,
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(userData),
-        })
-          .then((response) => response.json())
-          .then((data) => {
-            alert('회원 정보가 수정되었습니다.');
-          });
+      makeFetchRequest(`${URL}/auth/me`, {
+        method: 'PATCH',
+        headers: {
+          Authorization: 'Bearer ' + jwt,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(userData),
+      }).then((data) => {
+        alert('회원 정보가 수정되었습니다.');
       });
+    });
   }
 });
 

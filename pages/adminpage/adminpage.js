@@ -1,42 +1,65 @@
 import { URL } from '../assets/js/constants';
+import { makeFetchRequest } from '../assets/js/api';
+import Swal from 'sweetalert2';
 
-window.onload = async () => {
+document.addEventListener('DOMContentLoaded', async () => {
+  const adminPage = document.querySelector('.inner');
   const jwt = localStorage.getItem('jwt');
+
   if (!jwt) {
-    // jwt가 없는 경우
-    alert('너는 권한이 없단다. 아가야');
+    await Swal.fire({
+      title: '세션 만료',
+      text: '세션이 만료되었습니다. 다시 로그인해주세요.',
+      icon: 'error',
+      confirmButtonText: '확인',
+      customClass: {
+        container: 'custom-popup',
+      },
+    });
     window.location.href = '/';
-    return; // 함수 종료
+    return;
   }
 
-  const user = await fetch(`${URL}/auth/me`, {
-    method: 'GET',
-    headers: {
-      Authorization: 'Bearer ' + jwt,
-    },
-  });
+  try {
+    const userInfo = await makeFetchRequest(`${URL}/auth/me`, {
+      method: 'GET',
+      headers: {
+        Authorization: 'Bearer ' + jwt,
+      },
+    });
 
-  if (user.status === 401) {
-    // Unauthorized 에러 처리
-    alert('너는 권한이 없단다. 아가야');
-    window.location.href = '/';
-    return; // 함수 종료
-  }
+    const { role } = userInfo.data;
 
-  const userData = await user.json();
-  const role = userData.data.role;
-  // console.log(role);
-
-  if (role !== 'admin') {
-    // 권한이 없는 사용자 처리
-    alert('너는 권한이 없단다. 아가야');
-    window.location.href = '/';
-  } else {
-    // 권한이 있는 사용자 처리
-    document.querySelector('.admin-info').innerHTML = `
+    if (role !== 'admin') {
+      // 권한이 없는 사용자 처리
+      adminPage.style.visibiliy = 'hidden';
+      await Swal.fire({
+        title: '접근 불가',
+        text: '너는 권한이 없단다. 아가야...',
+        icon: 'error',
+        confirmButtonText: '확인',
+        customClass: {
+          container: 'custom-popup',
+        },
+      });
+      window.location.href = '/';
+      return;
+    } else {
+      // 권한이 있는 사용자 처리
+      adminPage.style.visibility = 'visible';
+      document.querySelector('.admin-info').innerHTML = `
       <ul>
-        <li>${userData.data.name}</li>
-        <li>${userData.data.email}</li>
+        <li>${userInfo.data.name}</li>
+        <li>${userInfo.data.email}</li>
       </ul>`;
+    }
+  } catch (error) {
+    await Swal.fire({
+      title: '오류',
+      text: '인증 중 오류가 발생했습니다.',
+      icon: 'error',
+      confirmButtonText: '확인',
+    });
+    window.location.href = '/';
   }
-};
+});
