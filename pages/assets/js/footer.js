@@ -1,4 +1,4 @@
-export const footerHTML = /*html*/`
+export const footerHTML = /*html*/ `
 <div class="footer_inner">
     <ul>
         <li>
@@ -23,4 +23,4 @@ export const footerHTML = /*html*/`
         Copyright. (c) 2024.03.01 어쩌구저쩌구. All rights reserved.
     </p>
 </div>
-`
+`;

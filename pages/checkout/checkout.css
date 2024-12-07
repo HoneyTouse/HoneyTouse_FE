@@ -1,302 +1,304 @@
 /* orders 공통 */
 
 .orders > * {
-    box-sizing: border-box;
-    accent-color: #FFC501;
+  box-sizing: border-box;
+  accent-color: #ffc501;
 }
 
 section.orders {
-    width: 100%;
-    max-width: 1300px;
-    box-sizing: border-box;    
-    padding: 0 30px;
-    padding-top: 135px;
-    padding-bottom: 80px;
-    margin: 0 auto;
+  width: 100%;
+  max-width: 1300px;
+  box-sizing: border-box;
+  padding: 0 30px;
+  padding-top: 135px;
+  padding-bottom: 80px;
+  margin: 0 auto;
 }
 
 .orders button {
-    padding: 17px 0;
-    border: none;
-    border-radius: 10px;
-    box-shadow: none;
-    font-size: 1em;
-    font-weight: bold;
-    color: #000;
-    background-color: #FFC501;
-    cursor: pointer;
+  padding: 17px 0;
+  border: none;
+  border-radius: 10px;
+  box-shadow: none;
+  font-size: 1em;
+  font-weight: bold;
+  color: #000;
+  background-color: #ffc501;
+  cursor: pointer;
 }
-.orders button:hover, .orders button:active {
-    background-color: #ECB600;
-    transition: background-color .1s;
+.orders button:hover,
+.orders button:active {
+  background-color: #ecb600;
+  transition: background-color 0.1s;
 }
 .orders section {
-    margin: 0 0 30px 0;
+  margin: 0 0 30px 0;
 }
 .orders hr {
-    height: 1px;
-    border: none;
-    background-color: #a7a7a7;
-    margin: 13px 0;
+  height: 1px;
+  border: none;
+  background-color: #a7a7a7;
+  margin: 13px 0;
 }
 .orders h1 {
-    margin: 40px 0;
-    color: #222;
-    font-family: "NanumSquareNeoHeavy";
-    font-size: 24px;
+  margin: 40px 0;
+  color: #222;
+  font-family: 'NanumSquareNeoHeavy';
+  font-size: 24px;
 }
 .orders b {
-    font-family: "NanumSquareNeoHeavy";
+  font-family: 'NanumSquareNeoHeavy';
 }
 .orders .sub-text {
-    font-size: 14px;
-    font-weight: normal;
-    color: #222;
+  font-size: 14px;
+  font-weight: normal;
+  color: #222;
 }
 .orders .option {
-    color: #aaa;
+  color: #aaa;
 }
 
 .orders form .info_list input {
-    border: none;
-    font-size: 16px;
-    width: 100%;
+  border: none;
+  font-size: 16px;
+  width: 100%;
 }
 .orders form .info_list input:focus-visible {
-    outline-color: #ddd;
+  outline-color: #ddd;
 }
 .orders .info_list .info_line .input-list {
-    width: 100%;
-    height: 80px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .orders .info_list .info_line .input-list .input-line {
-    display: flex;
-    width: 100%;
-    align-items: center;
+  display: flex;
+  width: 100%;
+  align-items: center;
 }
 .orders .info_list .info_line .input-list .input-line p {
-    color: #858585;
+  color: #858585;
 }
 
 /* 배송, 주문자 정보 공통 */
 .orders .section_title {
-    height: 36px;
-    display: flex;
-    align-items: flex-end;
-    padding-left: 10px;
-    margin-bottom: 10px;
-    font-size: 20px;
+  height: 36px;
+  display: flex;
+  align-items: flex-end;
+  padding-left: 10px;
+  margin-bottom: 10px;
+  font-size: 20px;
 }
 .orders .section_title .with-title {
-    display: flex;
-    margin-left: auto;
-    padding-right: 10px;
-    align-items: center;
+  display: flex;
+  margin-left: auto;
+  padding-right: 10px;
+  align-items: center;
 }
 .orders .section_title .sub-title {
-    margin: 0 8px;
-    color: #a7a7a7;
-    font-size: 0.8em;
+  margin: 0 8px;
+  color: #a7a7a7;
+  font-size: 0.8em;
 }
 .orders .wrap {
-    background-color: #fff;
-    padding: 10px 30px;
-    border: 4px solid #333;
-    box-shadow: none;
-    border-radius: 20px;
-    overflow: hidden;
+  background-color: #fff;
+  padding: 10px 30px;
+  border: 4px solid #333;
+  box-shadow: none;
+  border-radius: 20px;
+  overflow: hidden;
 }
 .orders .btn-modify {
-    margin-left: auto;
-    width: 80px;
-    box-sizing: border-box;
-    background-color: #FFC501;
-    padding: 10px;
-    border-radius: 5px;
-    font-size: 12px;
-    font-weight: normal;
+  margin-left: auto;
+  width: 80px;
+  box-sizing: border-box;
+  background-color: #ffc501;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: normal;
 }
 .orders .info_line .input-list button {
-    width: 90px;
-    min-width: 90px;
-    height: 20px;
-    padding: 0;
-    margin: 0;
-    margin-right: 5px;
+  width: 90px;
+  min-width: 90px;
+  height: 20px;
+  padding: 0;
+  margin: 0;
+  margin-right: 5px;
 }
 .orders .info_line {
-    display: flex;
-    align-items: center;
-    margin: 20px 0;
-    color: #222;
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+  color: #222;
 }
 .orders .info_line.align-top {
-    align-items: start;
+  align-items: start;
 }
 .orders .title {
-    width: 100px;
-    padding-top: 2px;
-    flex-shrink: 0;
-    font-family: "NanumSquareNeoBold";
+  width: 100px;
+  padding-top: 2px;
+  flex-shrink: 0;
+  font-family: 'NanumSquareNeoBold';
 }
 .orders .desc {
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 /* 상품정보 공통 */
 .orders .product_img {
-    width: 15%;
-    min-width: 80px;
-    border-radius: 5px;
-    overflow: hidden;
-    aspect-ratio: 1/1;
-    display: flex;
-    flex-shrink: 0;
+  width: 15%;
+  min-width: 80px;
+  border-radius: 5px;
+  overflow: hidden;
+  aspect-ratio: 1/1;
+  display: flex;
+  flex-shrink: 0;
 }
 .orders .product_img img {
-    width: 100%;
-    object-fit: cover;
+  width: 100%;
+  object-fit: cover;
 }
 .orders .product_detail {
-    margin-left: 15px;
-    overflow: hidden;
-    flex: 1 0;
+  margin-left: 15px;
+  overflow: hidden;
+  flex: 1 0;
 }
 .orders .product_detail > * {
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-    font-family: "NanumSquareNeoBold";
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  font-family: 'NanumSquareNeoBold';
 }
 .orders .product_detail .name {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 .orders .product_detail .option {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 .orders .product_detail .price {
-    display: flex;
-    align-items: end;
-    font-size: 18px;
-    font-family: "NanumSquareNeoHeavy";
+  display: flex;
+  align-items: end;
+  font-size: 18px;
+  font-family: 'NanumSquareNeoHeavy';
 }
 .orders .product_detail .price .qty {
-    margin-left: 8px;
-    padding-left: 8px;
-    border-left: solid 1px #222;
+  margin-left: 8px;
+  padding-left: 8px;
+  border-left: solid 1px #222;
 }
 
 /* 결제금액 공통 */
 .orders .payment_list .info_line {
-    justify-content: space-between;
+  justify-content: space-between;
 }
 .orders .payment_list .info_line > * {
-    font-family: "NanumSquareNeoBold";
+  font-family: 'NanumSquareNeoBold';
 }
 .orders .payment_list .ttl > * {
-    font-family: "NanumSquareNeoHeavy";
-    font-size: 18px;
+  font-family: 'NanumSquareNeoHeavy';
+  font-size: 18px;
 }
 .orders .payment_list hr {
-    background: none;
-    border-bottom: 2px dashed #555;
+  background: none;
+  border-bottom: 2px dashed #555;
 }
 .orders .check_list {
-    margin-bottom: 17px;
+  margin-bottom: 17px;
 }
 .orders .check_list li {
-    display: flex;
-    align-items: center;
-    margin-top: 8px;
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
 }
 .orders .check_list label {
-    padding-left: 2px;
-    font-size: 0.8em;
+  padding-left: 2px;
+  font-size: 0.8em;
 }
 .orders .payment_list .ttl .desc {
-    box-shadow: 0 -6px #FFC501 inset, 0 4px #FFC501;
+  box-shadow:
+    0 -6px #ffc501 inset,
+    0 4px #ffc501;
 }
 
 /* checkout 전용 */
 .checkout .notice {
-    padding: 1em;
-    background-color: #FFF8EA;
+  padding: 1em;
+  background-color: #fff8ea;
 }
 .checkout .form-order {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    position: relative;
-    margin-bottom: 40px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  margin-bottom: 40px;
 }
 .checkout .info {
-    width: 70%;
+  width: 70%;
 }
 .checkout .side-bar {
-    width: 28%;
-    min-width: 280px;
-    margin-left: 26px;
+  width: 28%;
+  min-width: 280px;
+  margin-left: 26px;
 }
 .checkout .confirm {
-    width: 100%;
-    position: sticky;
-    /* header 높이 적용하기 */
-    top: 175px;
+  width: 100%;
+  position: sticky;
+  /* header 높이 적용하기 */
+  top: 175px;
 }
 .checkout #btnCheckout {
-    width: 100%;
-    margin-top: 15px;
+  width: 100%;
+  margin-top: 15px;
 }
 .checkout #itemList hr {
-    background: none;
-    border-bottom: 2px dashed #555;
+  background: none;
+  border-bottom: 2px dashed #555;
 }
-
 
 /* result 페이지 전용 */
 .result .result_area {
-    width: 550px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto;
-    margin-bottom: 10px;
+  width: 550px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  margin-bottom: 10px;
 }
 
-.result .result_area .data, .guide {
-    margin-bottom: 16px;
-    color: #555;
+.result .result_area .data,
+.guide {
+  margin-bottom: 16px;
+  color: #555;
 }
 
 .result .result_area .result_img {
-    width: 200px;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 50px;
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
 }
 
 .result .result_area .result_img img {
-    width: 100%;
+  width: 100%;
 }
 
 .result .result_area a {
-    width: 100%;
-    margin-bottom: 30px;
-    border-radius: 8px;
+  width: 100%;
+  margin-bottom: 30px;
+  border-radius: 8px;
 }
 
 .result .result_area #btnOrderlist {
-    width: 100%;
-    margin-top: 15px;
+  width: 100%;
+  margin-top: 15px;
 }
 
 .result .result_area section {
-    width: 100%;
+  width: 100%;
 }
-

@@ -1,4 +1,4 @@
-document.getElementById("sidebar").innerHTML = `                    
+document.getElementById('sidebar').innerHTML = `                    
 <a href="/mypage/index.html"><h1>마이페이지</h1></a>
 <h2>쇼핑 정보</h2>
 <ul>

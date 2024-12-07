@@ -2,7 +2,7 @@
   position: relative;
   padding-top: 135px;
 }
-.pdt-info >.container {
+.pdt-info > .container {
   max-width: 1300px;
   margin: 0 auto;
   box-sizing: border-box;
@@ -25,9 +25,9 @@
   position: relative;
 }
 .pdt-selling-cover-image-wrap {
-  position: relative; 
-  left: 0; 
-  width: 500px; 
+  position: relative;
+  left: 0;
+  width: 500px;
   height: 500px;
   float: right;
   border-radius: 15px;
@@ -40,7 +40,7 @@
   position: absolute;
   width: 500px;
   object-fit: cover;
-	height:500px;
+  height: 500px;
 }
 .pdt-detail-wrap {
   position: relative;
@@ -63,7 +63,7 @@
 .pdt-brand {
   color: #656e75;
   font-weight: 700;
-  transition: opacity .1s;
+  transition: opacity 0.1s;
 }
 .pdt-name-wrap {
   position: relative;
@@ -155,7 +155,7 @@
   position: relative;
   margin-bottom: 10px;
   padding: 15px;
-  background-color: #FFF8EA;
+  background-color: #fff8ea;
   border-radius: 10px;
   color: #000;
 }
@@ -291,7 +291,7 @@
   display: flex;
   width: 100%;
 }
-.pdt-selling-nav_list >li{
+.pdt-selling-nav_list > li {
   flex: 1 0 0;
 }
 .pdt-selling-nav_item {
@@ -309,9 +309,9 @@
   color: #000;
 }
 .pdt-selling-nav_item-active {
-  color:#ffc501;
+  color: #ffc501;
   border-bottom: 3px solid #ffc501;
-  animation-duration: 3s
+  animation-duration: 3s;
 }
 .pdt-selling-section {
   padding: 50px 70px 60px 70px;
@@ -337,7 +337,7 @@
 }
 .pdt-selling-description_content > * {
   width: 100% !important;
-  max-width: 100%!important;
+  max-width: 100% !important;
 }
 .pdt-selling-description_content p {
   margin: 0;
@@ -373,7 +373,7 @@
 }
 .pdt-selling-table th {
   width: 18ch;
-  color:#000;
+  color: #000;
 }
 .pdt-selling-table td {
   color: #000;
@@ -399,19 +399,19 @@
   font-size: 13px;
   line-height: 17px;
 }
-.pdt-selling-refund_list >li {
+.pdt-selling-refund_list > li {
   position: relative;
   padding-left: 14px;
 }
-.pdt-selling-refund_list >li:before {
+.pdt-selling-refund_list > li:before {
   counter-increment: index;
-  content: counter(index) " ";
+  content: counter(index) ' ';
   font-weight: 700;
   position: absolute;
   top: 0;
   left: 0;
 }
-.pdt-selling-refund_list >li small {
+.pdt-selling-refund_list > li small {
   color: #000;
 }
 .pdt-selling_top-button {
@@ -447,12 +447,12 @@
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0, .5);
+  background-color: rgba(0, 0, 0, 0.5);
 }
 .alertly-container {
   position: absolute;
-  left : 0;
-  right : 0; 
+  left: 0;
+  right: 0;
   top: 25%;
   margin: auto;
   width: 500px;

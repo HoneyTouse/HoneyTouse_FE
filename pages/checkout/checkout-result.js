@@ -1,26 +1,24 @@
-import { URL } from "/assets/js/constants";
+import { URL } from '/assets/js/constants';
 
-const jwt = localStorage.getItem("jwt");
+const jwt = localStorage.getItem('jwt');
 
-const $orderNum = document.querySelector(".order_num");
-const $orderDate = document.getElementById("orderDate");
-const $receiverMemo = document.getElementById("receiverMemo");
-const $receiverName = document.getElementById("receiverName");
-const $receiverPhoneNumber = document.getElementById("receiverPhoneNumber");
-const $receiverAddress = document.getElementById("receiverAddress");
-const $ttlPriceList = Array.from(
-  document.querySelectorAll(".payment_list .desc")
-);
-const $ttlPriceItem = document.getElementById("ttlPriceItem");
-const $ttlPriceDelivery = document.getElementById("ttlPriceDelivery");
-const $ttlPrice = document.getElementById("ttlPrice");
+const $orderNum = document.querySelector('.order_num');
+const $orderDate = document.getElementById('orderDate');
+const $receiverMemo = document.getElementById('receiverMemo');
+const $receiverName = document.getElementById('receiverName');
+const $receiverPhoneNumber = document.getElementById('receiverPhoneNumber');
+const $receiverAddress = document.getElementById('receiverAddress');
+const $ttlPriceList = Array.from(document.querySelectorAll('.payment_list .desc'));
+const $ttlPriceItem = document.getElementById('ttlPriceItem');
+const $ttlPriceDelivery = document.getElementById('ttlPriceDelivery');
+const $ttlPrice = document.getElementById('ttlPrice');
 
 //jwt로 user정보 가져오기
 if (jwt) {
   fetch(`${URL}/auth/me`, {
-    method: "GET",
+    method: 'GET',
     headers: {
-      Authorization: "Bearer " + jwt,
+      Authorization: 'Bearer ' + jwt,
     },
   })
     .then((response) => response.json())
@@ -33,18 +31,18 @@ if (jwt) {
       //배송정보
       $receiverName.textContent = name;
       $receiverPhoneNumber.textContent = autoHypenPhone(phoneNumber);
-      $receiverAddress.textContent = address + " " + addressDetail;
+      $receiverAddress.textContent = address + ' ' + addressDetail;
     })
     .catch((error) => {
-      console.error("Error fetching data", error);
+      console.error('Error fetching data', error);
     });
 
   //orders에서 data 가져오기
   fetch(`${URL}/orders`, {
-    method: "GET",
+    method: 'GET',
     headers: {
-      "Content-Type": "application/json",
-      Authorization: "Bearer " + jwt,
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer ' + jwt,
     },
   })
     .then((response) => response.json())
@@ -68,29 +66,29 @@ if (jwt) {
         // 가져온 데이터 확인
         // 데이터 입력
         $receiverMemo.textContent = memo;
-        $orderNum.textContent = createdAt.slice(0, 10) + "-" + _id.slice(0, 6);
+        $orderNum.textContent = createdAt.slice(0, 10) + '-' + _id.slice(0, 6);
         $ttlPriceItem.textContent = ttlPriceItem;
         $ttlPriceDelivery.textContent = ttlPriceDelivery;
         $ttlPrice.textContent = ttlPrice;
         // 숫자데이터 정리
         $ttlPriceList.slice(0, 3).forEach(paymentList);
-        $orderDate.textContent = createdAt.replace("T", " ").slice(0, 19);
+        $orderDate.textContent = createdAt.replace('T', ' ').slice(0, 19);
       } else {
-        console.log("해당 _id 값을 가진 주문을 찾을 수 없습니다.");
+        console.log('해당 _id 값을 가진 주문을 찾을 수 없습니다.');
       }
     })
     .catch((error) => {
-      console.error("Error fetching data", error);
+      console.error('Error fetching data', error);
     });
 } else {
-  const geustUser = JSON.parse(localStorage.getItem("geustUser"));
+  const geustUser = JSON.parse(localStorage.getItem('geustUser'));
   const params = new URLSearchParams(window.location.search);
-  const guestId = params.get("param1");
+  const guestId = params.get('param1');
   //orders에서 data 가져오기
   fetch(`${URL}/orders/${guestId}`, {
-    method: "GET",
+    method: 'GET',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
   })
     .then((response) => response.json())
@@ -101,8 +99,7 @@ if (jwt) {
       if (datas) {
         $receiverName.textContent = geustUser.receiverName;
         $receiverPhoneNumber.textContent = geustUser.receiverPhoneNumber;
-        $receiverAddress.textContent =
-          geustUser.receiverAddress + " " + geustUser.receiverAddressDetail;
+        $receiverAddress.textContent = geustUser.receiverAddress + ' ' + geustUser.receiverAddressDetail;
         // 선택한 객체의 값 가져오기
         const {
           _id,
@@ -118,28 +115,28 @@ if (jwt) {
         // 가져온 데이터 확인
         // 데이터 입력
         $receiverMemo.textContent = memo;
-        $orderNum.textContent = createdAt.slice(0, 10) + "-" + _id.slice(0, 6);
+        $orderNum.textContent = createdAt.slice(0, 10) + '-' + _id.slice(0, 6);
         $ttlPriceItem.textContent = ttlPriceItem;
         $ttlPriceDelivery.textContent = ttlPriceDelivery;
         $ttlPrice.textContent = ttlPrice;
         // 숫자데이터 정리
         $ttlPriceList.slice(0, 3).forEach(paymentList);
-        $orderDate.textContent = createdAt.replace("T", " ").slice(0, 19);
+        $orderDate.textContent = createdAt.replace('T', ' ').slice(0, 19);
       } else {
-        console.log("해당 _id 값을 가진 주문을 찾을 수 없습니다.");
+        console.log('해당 _id 값을 가진 주문을 찾을 수 없습니다.');
       }
     })
     .catch((error) => {
-      console.error("Error fetching data", error);
+      console.error('Error fetching data', error);
     });
 }
 
 //함수 리스트
 function autoHypenPhone(str) {
   return str
-    .replace(/[^0-9]/g, "")
-    .replace(/^(\d{3})(\d{0,4})/, "$1-$2")
-    .replace(/^(\d{3})-(\d{4})(\d{0,4})/, "$1-$2-$3");
+    .replace(/[^0-9]/g, '')
+    .replace(/^(\d{3})(\d{0,4})/, '$1-$2')
+    .replace(/^(\d{3})-(\d{4})(\d{0,4})/, '$1-$2-$3');
 }
 
 function paymentList(el) {
@@ -147,8 +144,8 @@ function paymentList(el) {
   let content = el.textContent.trim();
 
   // 1. 내용이 비어있을 때 숫자 0을 넣어주기
-  if (content === "") {
-    content = "0";
+  if (content === '') {
+    content = '0';
   }
 
   // 2. 내용이 숫자값인지 확인하고, 숫자로 변환하여 .toLocaleString()을 적용
@@ -159,5 +156,5 @@ function paymentList(el) {
   }
 
   // 3. 내용 뒤에 '원'을 추가 후, 변환된 내용을 다시 요소에 넣기
-  el.textContent = content + "원";
+  el.textContent = content + '원';
 }

@@ -1,188 +1,209 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="주문결제를 진행하는 페이지입니다.">
-		<title>꿀단집</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="주문결제를 진행하는 페이지입니다." />
+    <title>꿀단집</title>
 
     <!-- 웹 폰트 나눔스퀘어 네오 -->
-	<link rel="icon" href="../favicon.png">
-    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css" rel="stylesheet">
-    <link rel="stylesheet" href="/assets/css/style.css">
-    <link rel="stylesheet" href="./checkout.css">
+    <link rel="icon" href="../favicon.png" />
+    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+    <link rel="stylesheet" href="./checkout.css" />
     <script src="https://kit.fontawesome.com/931727edad.js" crossorigin="anonymous"></script>
-</head>
+  </head>
 
-<body>
-    <header class="header">
-        
-    </header>
+  <body>
+    <header class="header"></header>
 
-	<section class="orders checkout">
-		<div class="checkout_inner">
-			<h1>주문 결제</h1>
-			<form action="" method="POST" class="form-order">
-				<article class="info">
-					<section class="info-delivery">
-						<div class="section_title">
-							<h2>🚚배송 정보</h2>
-							<label class="with-title sub-text">주문자 정보와 동일
-								<input id="getCustomerData" type="checkbox" />
-							</label>
-						</div>
-						<article class="section_content wrap">
-							<ul class="info_list">
-								<li class="info_line">
-									<label class="title" for="receiverName">수령인</label>
-									<input class="desc" id="receiverName" type="text" name="name"
-										placeholder="이름"
-										value=""
-										required
-									/>
-								</li>
-								<li class="info_line">
-									<label class="title" for="receiverPhoneNumber">휴대폰</label>
-									<input class="desc" id="receiverPhoneNumber" type="tel" name="phoneNumber"
-										placeholder="-없이 입력"
-										value=""
-										maxlength="13"
-										required
-									/>
-								</li>
-								<li class="info_line align-top">
-									<label class="title" for="receiverAddress">주소</label>
-									<div class="input-list">
-										<div class="input-line">
-											<button class="btn-modify ja_find" type="button">우편번호 찾기</button>
-											<p class="desc" id="receiverPostcode"></p>
-										</div>
-										<input class="desc" id="receiverAddress" type="text" name="address"
-											placeholder="도로명 주소"
-											value=""
-											required
-										/>
-										<input class="desc" id="receiverAddressDetail" type="text" name="addressDetail"
-											placeholder="상세주소"
-											value=""
-											required
-										/>
-									</div>
-								</li>
-								<li class="info_line">
-									<label class="title" for="receiverMemo">배송메모</label>
-									<input class="desc" id="receiverMemo" type="text" name="memo"
-										placeholder="직접 입력"
-										value="부재시 경비실에"
-										required
-									/>
-								</li>
-							</ul>
-						</article>
-					</section>
-					<section class="info-customer">
-						<div class="section_title">
-							<h2>🐝주문자</h2>
-						</div>
-						<article class="section_content wrap">
-							<ul class="info_list">
-								<li class="info_line">
-									<label for="userName" class="title">이름</label>
-									<input class="desc" id="userName" type="text" name="name"
-										placeholder="주문자 성함을 입력하세요."
-										value=""
-										required
-									/>
-								</li>
-								<li class="info_line">
-									<label for="userPhoneNumber" class="title">휴대폰</label>
-									<input class="desc" id="userPhoneNumber" type="tel" name="phoneNumber"
-										placeholder="-없이 입력"
-										value=""
-										maxlength="13"
-										required
-									/>
-								</li>
-								<li class="info_line">
-									<label for="userEmail" class="title">이메일</label>
-									<input class="desc" id="userEmail" type="email" name="email"
-										placeholder="주문자 이메일을 입력하세요."
-										value=""
-										required
-									 />
-								</li>
-							</ul>
-						</article>
-					</section>
-					<section class="info-product">
-						<div class="section_title">
-							<h2>📦주문 상품</h2>
-							<span class="sub-title" id="orderQty">건</span>
-						</div>
-						<div class="wrap" id="itemList">
-							<!-- 장바구니에서 상품 넘어오는 곳 -->
-						</div>
-					</section>
-					<div class="notice sub-text">
-						<p>* 별도의 결제과정 없이 주문됩니다.</p>
-					</div>
-				</article>
-				<aside class="side-bar">
-					<article class="confirm">
-						<section class="payment">
-							<div class="section_title">
-								<h2>💸결제 금액</h2>
-							</div>
-							<article class="section_content wrap">
-								<dl class="payment_list">
-									<div class="info_line">
-										<dt class="title">총 상품 금액</dt>
-										<dd class="desc" id="ttlPriceItem"></dd>
-									</div>
-									<div class="info_line">
-										<dt class="title">총 배송비</dt>
-										<dd class="desc" id="ttlPriceDelivery"></dd>
-									</div>
-									<hr />
-									<div class="info_line ttl">
-										<dt class="title">총 결제 금액</dt>
-										<dd class="desc" id="ttlPrice"></dd>
-									</div>
-									<hr />
-								</dl>
-								<ul class="check_list">
-									<li>
-										<input type="checkbox" name="agreePayment" id="agreePayment"
-											required
-										/>
-										<label for="agreePayment">상기 결제내역을 확인했습니다.</label>
-									</li>
-									<li>
-										<input type="checkbox" name="agreePrivacy" id="agreePrivacy"
-											required
-										/>
-										<label for="agreePrivacy">개인정보 수집 및 제 3자 제공 동의</label>
-									</li>
-								</ul>
-							</article>
-							<button type="submit" class="bold" id="btnCheckout">
-								결제하기
-							</button>
-						</section>
-					</article>
-				</aside>
-			</form>
-		</div>
-	</section>
+    <section class="orders checkout">
+      <div class="checkout_inner">
+        <h1>주문 결제</h1>
+        <form action="" method="POST" class="form-order">
+          <article class="info">
+            <section class="info-delivery">
+              <div class="section_title">
+                <h2>🚚배송 정보</h2>
+                <label class="with-title sub-text"
+                  >주문자 정보와 동일
+                  <input id="getCustomerData" type="checkbox" />
+                </label>
+              </div>
+              <article class="section_content wrap">
+                <ul class="info_list">
+                  <li class="info_line">
+                    <label class="title" for="receiverName">수령인</label>
+                    <input
+                      class="desc"
+                      id="receiverName"
+                      type="text"
+                      name="name"
+                      placeholder="이름"
+                      value=""
+                      required
+                    />
+                  </li>
+                  <li class="info_line">
+                    <label class="title" for="receiverPhoneNumber">휴대폰</label>
+                    <input
+                      class="desc"
+                      id="receiverPhoneNumber"
+                      type="tel"
+                      name="phoneNumber"
+                      placeholder="-없이 입력"
+                      value=""
+                      maxlength="13"
+                      required
+                    />
+                  </li>
+                  <li class="info_line align-top">
+                    <label class="title" for="receiverAddress">주소</label>
+                    <div class="input-list">
+                      <div class="input-line">
+                        <button class="btn-modify ja_find" type="button">우편번호 찾기</button>
+                        <p class="desc" id="receiverPostcode"></p>
+                      </div>
+                      <input
+                        class="desc"
+                        id="receiverAddress"
+                        type="text"
+                        name="address"
+                        placeholder="도로명 주소"
+                        value=""
+                        required
+                      />
+                      <input
+                        class="desc"
+                        id="receiverAddressDetail"
+                        type="text"
+                        name="addressDetail"
+                        placeholder="상세주소"
+                        value=""
+                        required
+                      />
+                    </div>
+                  </li>
+                  <li class="info_line">
+                    <label class="title" for="receiverMemo">배송메모</label>
+                    <input
+                      class="desc"
+                      id="receiverMemo"
+                      type="text"
+                      name="memo"
+                      placeholder="직접 입력"
+                      value="부재시 경비실에"
+                      required
+                    />
+                  </li>
+                </ul>
+              </article>
+            </section>
+            <section class="info-customer">
+              <div class="section_title">
+                <h2>🐝주문자</h2>
+              </div>
+              <article class="section_content wrap">
+                <ul class="info_list">
+                  <li class="info_line">
+                    <label for="userName" class="title">이름</label>
+                    <input
+                      class="desc"
+                      id="userName"
+                      type="text"
+                      name="name"
+                      placeholder="주문자 성함을 입력하세요."
+                      value=""
+                      required
+                    />
+                  </li>
+                  <li class="info_line">
+                    <label for="userPhoneNumber" class="title">휴대폰</label>
+                    <input
+                      class="desc"
+                      id="userPhoneNumber"
+                      type="tel"
+                      name="phoneNumber"
+                      placeholder="-없이 입력"
+                      value=""
+                      maxlength="13"
+                      required
+                    />
+                  </li>
+                  <li class="info_line">
+                    <label for="userEmail" class="title">이메일</label>
+                    <input
+                      class="desc"
+                      id="userEmail"
+                      type="email"
+                      name="email"
+                      placeholder="주문자 이메일을 입력하세요."
+                      value=""
+                      required
+                    />
+                  </li>
+                </ul>
+              </article>
+            </section>
+            <section class="info-product">
+              <div class="section_title">
+                <h2>📦주문 상품</h2>
+                <span class="sub-title" id="orderQty">건</span>
+              </div>
+              <div class="wrap" id="itemList">
+                <!-- 장바구니에서 상품 넘어오는 곳 -->
+              </div>
+            </section>
+            <div class="notice sub-text">
+              <p>* 별도의 결제과정 없이 주문됩니다.</p>
+            </div>
+          </article>
+          <aside class="side-bar">
+            <article class="confirm">
+              <section class="payment">
+                <div class="section_title">
+                  <h2>💸결제 금액</h2>
+                </div>
+                <article class="section_content wrap">
+                  <dl class="payment_list">
+                    <div class="info_line">
+                      <dt class="title">총 상품 금액</dt>
+                      <dd class="desc" id="ttlPriceItem"></dd>
+                    </div>
+                    <div class="info_line">
+                      <dt class="title">총 배송비</dt>
+                      <dd class="desc" id="ttlPriceDelivery"></dd>
+                    </div>
+                    <hr />
+                    <div class="info_line ttl">
+                      <dt class="title">총 결제 금액</dt>
+                      <dd class="desc" id="ttlPrice"></dd>
+                    </div>
+                    <hr />
+                  </dl>
+                  <ul class="check_list">
+                    <li>
+                      <input type="checkbox" name="agreePayment" id="agreePayment" required />
+                      <label for="agreePayment">상기 결제내역을 확인했습니다.</label>
+                    </li>
+                    <li>
+                      <input type="checkbox" name="agreePrivacy" id="agreePrivacy" required />
+                      <label for="agreePrivacy">개인정보 수집 및 제 3자 제공 동의</label>
+                    </li>
+                  </ul>
+                </article>
+                <button type="submit" class="bold" id="btnCheckout">결제하기</button>
+              </section>
+            </article>
+          </aside>
+        </form>
+      </div>
+    </section>
 
-    <footer class="footer">
-        
-    </footer>
-</body>
-<script type="module" src="/assets/js/common.js"></script>
-<!-- 주소 스크립트 -->
-<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script type="module" src="./checkout.js"></script>
-
+    <footer class="footer"></footer>
+  </body>
+  <script type="module" src="/assets/js/common.js"></script>
+  <!-- 주소 스크립트 -->
+  <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+  <script type="module" src="./checkout.js"></script>
 </html>
