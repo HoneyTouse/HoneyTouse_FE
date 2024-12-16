@@ -1,5 +1,4 @@
 import { URL } from '../assets/js/constants';
-import { makeFetchRequest } from '../assets/js/api';
 import Swal from 'sweetalert2';
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -8,8 +7,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   if (!jwt) {
     await Swal.fire({
-      title: '세션 만료',
-      text: '세션이 만료되었습니다. 다시 로그인해주세요.',
+      title: '권한 없음',
+      text: '너는 권한이 없단다. 아가야...',
       icon: 'error',
       confirmButtonText: '확인',
       customClass: {
@@ -21,7 +20,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   try {
-    const userInfo = await makeFetchRequest(`${URL}/auth/me`, {
+    const userInfo = await fetch(`${URL}/auth/me`, {
       method: 'GET',
       headers: {
         Authorization: 'Bearer ' + jwt,
@@ -34,7 +33,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       // 권한이 없는 사용자 처리
       adminPage.style.visibiliy = 'hidden';
       await Swal.fire({
-        title: '접근 불가',
+        title: '권한 없음',
         text: '너는 권한이 없단다. 아가야...',
         icon: 'error',
         confirmButtonText: '확인',

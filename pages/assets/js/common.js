@@ -68,28 +68,25 @@ window.addEventListener('load', () => {
   }
 
   // 로그아웃 버튼 클릭 이벤트
-  $hLoginOut.addEventListener('click', (e) => {
+  $hLoginOut.addEventListener('click', async (e) => {
     e.preventDefault();
 
-    let isSocialLogIn = sessionStorage.getItem('isSocialLogIn');
-
-    if (isSocialLogIn) {
-      logout();
+    try {
+      await fetch(`${URL}/auth/sign-out`, {
+        method: 'POST',
+        headers: {
+          Authorization: 'Bearer ' + jwt,
+        },
+        credentials: 'include',
+      });
+    } catch (error) {
+      console.error('로그아웃 중 에러', error);
     }
-    localStorage.removeItem('jwt'); // 로컬스토리지의 토큰 삭제
-    location.href = '/'; // 새로고침
+
+    localStorage.removeItem('jwt');
+    location.href = '/';
   });
 });
-
-// 로그아웃
-async function logout() {
-  try {
-    localStorage.removeItem('jwt'); // 로컬스토리지의 토큰 삭제
-    location.href = '/'; // 새로고침
-  } catch (error) {
-    console.error('Error:', error);
-  }
-}
 
 function createsearchRecent(text) {
   return (
